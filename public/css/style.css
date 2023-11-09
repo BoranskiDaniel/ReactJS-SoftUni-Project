@@ -2003,7 +2003,7 @@ ul.social_icon li a:hover {
 
 /** offer **/
 .offer {
-     padding-top: 90px;
+     padding-top: 0px;
 }
 
 .offer-bg {
@@ -2033,6 +2033,7 @@ ul.social_icon li a:hover {
 
 .offer .offer-bg .offer_box figure img {
      width: 100%;
+     border-radius: 40px;
 }
 
 .offer .offer-bg .offer_box h3 {
@@ -2049,6 +2050,10 @@ ul.social_icon li a:hover {
      color: #fff;
 }
 
+.offer .row {
+     margin-top: -30px;
+}
+
 .read-more {
      font-family: poppins;
      max-width: 212px;
@@ -2062,7 +2067,7 @@ ul.social_icon li a:hover {
      font-size: 17px;
      float: left;
      border-radius: 10px;
-     margin-top: -10px;
+     margin-top: -70px;
 }
 
 .read-more:hover {
@@ -2086,6 +2091,9 @@ ul.social_icon li a:hover {
 
 
 /** product **/
+#product .row {
+     padding-top: 25px
+}
 
 .product {
      padding: 90px 0px 60px 0px;
@@ -2172,6 +2180,10 @@ ul.social_icon li a:hover {
      color: #fff;
      background: #052501;
      padding: 40px 50px;
+}
+
+#testimonial .row {
+     padding-top: 70px;
 }
 
 #testimonial_slider .carousel-indicators {

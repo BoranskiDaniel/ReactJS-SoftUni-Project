@@ -1,3 +1,5 @@
+import Navigation from "./Navigation";
+
 export default function Header() {
     return (
         <header>
@@ -17,10 +19,10 @@ export default function Header() {
                         <div className="col-xl-9 col-lg-9 col-md-9 col-sm-9">
                             <div className="location_icon_bottum_tt">
                                 <ul>
-                                    <li><img src="icon/loc1.png" />Location</li>
-                                    <li><img src="icon/email1.png" />demo@gmail.com</li>
+                                    <li><img src="icon/loc1.png" />Sofia, Bulgaria</li>
+                                    <li><img src="icon/email1.png" />farmcompany@gmail.com</li>
 
-                                    <li><img src="icon/call1.png" />(+71)9876543109</li>
+                                    <li><img src="icon/call1.png" />(+359)877654321</li>
                                 </ul>
                             </div>
                         </div>
@@ -31,20 +33,7 @@ export default function Header() {
                                 <div>
                                     <div className="menu-area">
                                         <div className="limit-box">
-                                            <nav className="main-menu">
-                                                <ul>
-                                                    <li className="active"> <a href="index.html">Home</a> </li>
-                                                    <li> <a href="#about">About</a> </li>
-                                                    <li><a href="#product">Products</a></li>
-                                                    <li><a href="#testimonial">Testimonial</a></li>
-                                                    <li><a href="#contact">Contact Us</a></li>
-                                                    {/* add form, validation if user is logged out */}
-                                                    <li>Login</li>
-                                                    <li>Register</li>
-                                                    {/* if user is logged in */}
-                                                    <li>Logout</li>
-                                                </ul>
-                                            </nav>
+                                            <Navigation />
                                         </div>
                                     </div>
                                 </div>

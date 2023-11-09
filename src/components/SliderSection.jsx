@@ -1,6 +1,9 @@
+import ForBox from "./ForBox";
+
 export default function SliderSection() {
     return (
         <section className="slider_section">
+            <ForBox />
             <div id="myCarousel" className="carousel slide banner-main" data-ride="carousel">
                 <ul className="carousel-indicators">
                     <li data-target="#myCarousel" data-slide-to="0" className=""></li>

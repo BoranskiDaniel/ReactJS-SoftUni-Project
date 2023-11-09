@@ -16,30 +16,24 @@ export default function Offer() {
                         <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12 ">
                             <div className="offer_box">
                                 <h3>Agriculture Products</h3>
-                                <figure><img src="images/offer1.png" alt="img" /></figure>
-                                <p>consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
+                                <figure><img src="images/offer1.png" alt="agriculture" /></figure>
+                                <p>Need agricultural products? Try the best products from local producers with many years of experience and undisputed quality.</p>
 
                             </div>
                         </div>
                         <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12 margin_ttt">
                             <div className="offer_box">
                                 <h3>Fresh Vegatables</h3>
-                                <figure><img src="images/offer2.png" alt="img" /></figure>
-                                <p>consectetur adipiscing elit, sed do eiusmodmpor incididunt ut labore et dolore magna
-                                    aliqua. Ut enim ad</p>
+                                <figure><img src="images/offer2.png" alt="vegetables" /></figure>
+                                <p>Fresh vegetables without pesticides are grown with desire and love. Perfect choice for a healthy life.</p>
                             </div>
                         </div>
                         <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12 margin-lkk">
                             <div className="offer_box">
-                                <h3>Farm Factory</h3>
-                                <figure><img src="images/offer3.png" alt="img" /></figure>
-                                <p>consectetur adipiscing elit, sed do eiusmodmpor incididunt ut labore et dolore magna</p>
+                                <h3>Fresh Fruits</h3>
+                                <figure><img src="images/Fruits.jpg" alt="fruits" /></figure>
+                                <p>Juicy fruits grown in nature. Ideal source of energy.</p>
                             </div>
-                        </div>
-
-                        <div className="col-md-12">
-                            <a className="read-more">See More</a>
                         </div>
                     </div>
                 </div>
