@@ -12,7 +12,8 @@ export default function Navigation() {
                 <li> <Link to="/contacts"> Contact Us </Link></li>
                 {/* add form, validation if user is logged out */}
                 <li> <Link to="/login"> Login </Link></li>
-                <li> <a href="#register">Register</a></li>
+                <li> <Link to="/register"> Register </Link></li>
+
                 {/* if user is logged in */}
                 <li><a href="#logout">Logout</a></li>
             </ul>

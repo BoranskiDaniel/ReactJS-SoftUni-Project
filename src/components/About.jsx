@@ -36,7 +36,7 @@ export default function About() {
                                 </p>
                             </>)}
                             <div className="col-md-12">
-                                <button className="read-more" onClick={toggleReadMoreLess}>
+                                <button className="read-more-about" onClick={toggleReadMoreLess}>
                                     {isShowMore ? "Read less" : "Read more"}
                                 </button>
                             </div>

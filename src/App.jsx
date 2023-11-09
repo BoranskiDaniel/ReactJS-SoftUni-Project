@@ -6,7 +6,7 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 // import Loader from "./components/Loader" ;
 import Products from "./components/Products";
-// import RegisterForm from "./components/registerForm/RegisterForm" ;
+import RegisterModal from "./components/registerModal/RegisterModal";
 import LoginModal from "./components/loginModal/LoginModal";
 import SliderSection from "./components/SliderSection";
 import Testimonial from "./components/Testimonial";
@@ -20,8 +20,6 @@ function App() {
             {/* <Loader /> */}
             <Header />
 
-
-
             <Routes>
 
                 <Route path='/' element={<SliderSection />} />
@@ -30,9 +28,11 @@ function App() {
                 <Route path='/testimonial' element={<Testimonial />} />
                 <Route path='/contacts' element={<Contacts />} />
                 <Route path='/login' element={<LoginModal />} />
+                <Route path='/register' element={<RegisterModal />} />
 
                 {/* add Map ! */}
             </Routes>
+
             <Footer />
         </div>
     )

@@ -1,21 +1,27 @@
 import { useState, useRef, useEffect } from 'react';
 
-import styles from './LoginForm.module.css';
+import styles from './RegisterForm.module.css';
 
 const formInitialState = {
     username: '',
+    company: '',
     password: '',
+    repeatPassword: '',
 };
-export default function LoginModal({
-    formRef,
+export default function RegisterForm({
+    formRef
 }) {
     const usernameInputRef = useRef();
+    const companyInputRef = useRef();
     const isMountedRef = useRef(false);
     const [formValues, setFormValues] = useState(formInitialState);
     const [errors, setErrors] = useState({});
 
     useEffect(() => {
         usernameInputRef.current.focus();
+    }, []);
+    useEffect(() => {
+        companyInputRef.current.focus();
     }, []);
 
     // Executes only on update
@@ -24,6 +30,8 @@ export default function LoginModal({
             isMountedRef.current = true;
             return;
         }
+
+        console.log('Form is updated')
     }, [formValues]);
 
     const changeHandler = (e) => {
@@ -47,8 +55,8 @@ export default function LoginModal({
     };
 
     return (
-        <div className={styles.loginForm}>
-            <h1>Login</h1>
+        <div className={styles.registerForm}>
+            <h1>Register</h1>
 
             <form ref={formRef} onSubmit={submitHandler}>
                 {/* <button className={styles.btnClose}>
@@ -68,6 +76,18 @@ export default function LoginModal({
                         name="username"
                         value={formValues.username}
                         onChange={changeHandler}
+                        onBlur={() => console.log('onBlur')}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="company">Company</label>
+                    <input
+                        ref={companyInputRef}
+                        type="text"
+                        id="company"
+                        name="company"
+                        value={formValues.company}
+                        onChange={changeHandler}
                     // onBlur={() => console.log('onBlur')}
                     />
                 </div>
@@ -82,8 +102,17 @@ export default function LoginModal({
                     />
                 </div>
                 <div>
-                    {/* <button type="submit" disabled={Object.values(errors).some(x => x)}>Login</button> */}
-                    <button>Login</button>
+                    <label htmlFor="repeatPassword">Repeat password</label>
+                    <input
+                        type="repeatPassword"
+                        id="repeatPassword"
+                        name="repeatPassword"
+                        value={formValues.repeatPassword}
+                        onChange={changeHandler}
+                    />
+                </div>
+                <div>
+                    <button type="submit" >Register</button>
                     <button type="button" onClick={resetFormHandler}>Reset</button>
                 </div>
             </form>
