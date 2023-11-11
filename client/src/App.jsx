@@ -15,8 +15,6 @@ function App() {
 
     return (
         <div className="main-layout ">
-
-            {/* <RegisterForm /> */}
             {/* <Loader /> */}
             <Header />
 

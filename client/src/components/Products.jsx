@@ -1,12 +1,25 @@
 import Offer from "./Offer";
+import * as productService from "../services/productService";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import ProductCard from "./ProductCard";
 
 export default function Products() {
     const [isMoreProducts, setIsMoreProducts] = useState(false);
     const showMoreProducts = () => {
         setIsMoreProducts(!isMoreProducts);
-    }
+    };
+
+    const [showProduct, setShowPorduct] = useState([]);
+    // const showProductClick = () => {
+    //     setShowPorduct(true);
+    // }
+    useEffect(() => {
+        productService.getAll()
+            .then(result => setShowPorduct(result))
+            .catch(err => console.log(err))
+    }, []);
+
 
     return (
         <div id="product" className="product">
@@ -28,54 +41,26 @@ export default function Products() {
                         </div>
                     </div>
                     <div className="container-fluid">
-                        <div className="row">
-                            <div className="col-xl-8 col-lg-8 col-md-8 col-sm-12">
-                                <div className="row">
-                                    <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                        <div className="product_box">
-                                            <figure><img src="images/product_img1.jpg" alt="#" />
-                                                <h3>Fresh Apple </h3>
-                                            </figure>
-                                        </div>
-                                    </div>
-                                    <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                        <div className="product_box">
-                                            <figure><img src="images/product_img2.jpg" alt="#" />
-                                                <h3>Fresh Aalu </h3>
-                                            </figure>
-                                        </div>
-                                    </div>
-                                    <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                                        <div className="product_box">
-                                            <figure><img src="images/product_img4.jpg" alt="#" />
-                                                <h3>Rice Field </h3>
-                                            </figure>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-                                <div className="row">
-                                    <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                                        <div className="product_box">
-                                            <figure><img src="images/product_img3.jpg" alt="#" />
-                                                <h3>Vegetables</h3>
-                                            </figure>
-                                        </div>
-                                    </div>
-                                    <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                                        <div className="product_box">
-                                            <figure><img src="images/product_img5.jpg" alt="#" />
-                                                <h3>Field Wheat </h3>
-                                            </figure>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
+                        {/* <figure><img src="images/product_img1.jpg" alt="#" /> */}
+                        {/* <h3>Fresh Apple </h3> */}
+                        {/* </figure> */}
+                        {showProduct.map((product) => (
+                            <ProductCard
+                                key={product._id}
+                                _id={product._id}
+                                name={product.name}
+                                type={product.type}
+                                sort={product.sort}
+                                imageUrl={product.imageUrl}
+                                company={product.company}
+                                price={product.price}
+                            />
+                        ))}
                     </div>
                 </>
-            )}
-        </div>
+            )
+            }
+        </div >
     );
 };
