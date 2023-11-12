@@ -8,7 +8,6 @@ export default function Navigation() {
                 <li className="active"> <Link to="/"> Home  </Link></li>
                 <li> <Link to="/about"> About </Link></li>
                 <li> <Link to="/products"> Products </Link></li>
-                <li> <Link to="/testimonial"> Testimonial </Link></li>
                 <li> <Link to="/contacts"> Contact Us </Link></li>
                 {/* add form, validation if user is logged out */}
                 <li> <Link to="/login"> Login </Link></li>

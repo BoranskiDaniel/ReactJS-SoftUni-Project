@@ -37,7 +37,7 @@ export default function AddProduct() {
                         <label htmlFor="company">Company</label>
                     </div>
                     <div className={styles.col75}>
-                        <input type="text" id="company" name="company" placeholder="Company name.."/>
+                        <input type="text" id="company" name="company" placeholder="Company name.." />
                     </div>
                 </div>
                 <div className={styles.row}>
