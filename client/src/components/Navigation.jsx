@@ -15,6 +15,7 @@ export default function Navigation() {
                 <li> <Link to="/register"> Register </Link></li>
 
                 {/* if user is logged in */}
+                <li> <Link to="/addProduct"> Add product </Link></li>
                 <li><a href="#logout">Logout</a></li>
             </ul>
         </nav>

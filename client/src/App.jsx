@@ -10,6 +10,7 @@ import RegisterModal from "./components/registerModal/RegisterModal";
 import LoginModal from "./components/loginModal/LoginModal";
 import SliderSection from "./components/SliderSection";
 import Testimonial from "./components/Testimonial";
+import AddProduct from "./components/addProduct/AddProduct";
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
                 <Route path='/contacts' element={<Contacts />} />
                 <Route path='/login' element={<LoginModal />} />
                 <Route path='/register' element={<RegisterModal />} />
+                <Route path='/addProduct' element={<AddProduct />} />
 
                 {/* add Map ! */}
             </Routes>

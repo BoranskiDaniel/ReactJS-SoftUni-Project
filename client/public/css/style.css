@@ -1963,6 +1963,7 @@ ul.social_icon li a:hover {
 
 .about_img figure {
      margin: 0;
+     height: auto
 }
 
 .about_img figure img {
