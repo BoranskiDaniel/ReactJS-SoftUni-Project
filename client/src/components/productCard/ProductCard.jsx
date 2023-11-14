@@ -1,4 +1,5 @@
-import styles from "./ProductCard.module.css"
+import styles from "./ProductCard.module.css";
+import { useState } from "react";
 
 export default function ProductCard({
     name,

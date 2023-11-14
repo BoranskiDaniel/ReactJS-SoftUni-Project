@@ -1,6 +1,7 @@
 import styles from "./AddProduct.module.css";
 import * as productService from "../../services/productService";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 
 export default function AddProduct() {
@@ -17,6 +18,12 @@ export default function AddProduct() {
         } catch (error) {
             throw new Error(`${error}`)
         }
+    }
+
+    const [checked, setChecked] = useState(false);
+    const onCheckChange = () => {
+        setChecked(!checked);
+
     }
     return (
         <div className={styles.container}>
@@ -67,11 +74,13 @@ export default function AddProduct() {
                 </div>
                 <div className={styles.row}>
                     <div className={styles.col25}>
-                        <label htmlFor="price">Price</label>
+                        <label htmlFor="price">Price per kg.</label>
                     </div>
                     <div className={styles.col75}>
-                        <input type="text" id="price" name="price" placeholder="Price" />
+                        <input type="text" id="price" name="price" placeholder="Price" disabled={checked} />
                     </div>
+                    <input className={styles.check} type="checkbox" id="negotiable" name="negotiable" value="negotiable" onChange={onCheckChange} />
+                    <label className={styles.check} htmlFor="negotiable"> Negotiable </label>
                 </div>
                 <div className={styles.row}>
                     <input type="submit" value="Submit" />

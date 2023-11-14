@@ -20,7 +20,6 @@ export default function Products() {
             .catch(err => console.log(err))
     }, []);
 
-
     return (
         <div id="product" className="product">
             <Offer />
@@ -41,10 +40,6 @@ export default function Products() {
                         </div>
                     </div>
                     <div className="container-fluid">
-
-                        {/* <figure><img src="images/product_img1.jpg" alt="#" /> */}
-                        {/* <h3>Fresh Apple </h3> */}
-                        {/* </figure> */}
                         {showProduct.map((product) => (
                             <ProductCard
                                 key={product._id}
