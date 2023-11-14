@@ -1,92 +1,29 @@
 {
-    "Tomatoes": {
-        "name": "Tomatoes",
-        "_id": "001",
-        "type": "Vegetable",
-        "sort": "Roma Tomatoes",
-        "imageUrl": "https://m.media-amazon.com/images/I/71shF9-pR-L.jpg",
-        "company": "Tomatoland LTD",
-        "price": "3$ per kg."
-    },
-    "Apples": {
+    "f5867e9b-23c4-48b5-9933-18a98bf4cbc7": {
         "name": "Apples",
-        "_id": "002",
-        "type": "Fruit",
+        "type": "fruit",
         "sort": "Granny Smith Apples",
         "imageUrl": "https://www.seriouseats.com/thmb/yiFX3VDd2yiHFKzY-Nu6X9JGi5o=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/__opt__aboutcom__coeus__resources__content_migration__serious_eats__sweets.seriouseats.com__images__2015__04__20150428-best-apples-for-pie-reupload-kenji-1-4d0a4c15136e4819814b2d205d2dc08f.jpg",
         "company": "Applandia",
-        "price": "2$ per kg."
+        "price": "2.00",
+        "_id": "f5867e9b-23c4-48b5-9933-18a98bf4cbc7"
     },
-    "Carrots": {
+    "7263eda8-64ff-46bc-9280-73d9317370cc": {
         "name": "Carrots",
-        "_id": "003",
-        "type": "Vegetable",
-        "Sort": "Nantes Carrots",
+        "type": "vegetable",
+        "sort": "Nantes Carrots",
         "imageUrl": "https://blog-images-1.pharmeasy.in/blog/production/wp-content/uploads/2021/04/23175719/shutterstock_440493100-1.jpg",
         "company": "Bunnyfood LTD",
-        "price": "1.80$ per kg."
+        "price": "1.80",
+        "_id": "7263eda8-64ff-46bc-9280-73d9317370cc"
     },
-    "Bananas": {
-        "name": "Bananas",
-        "_id": "004",
-        "type": "Fruit",
-        "sort": "Cavendish Bananas",
-        "imageUrl": "https://parfium.bg/img/att/282603889banani.jpg",
-        "company": "Banan LTD",
-        "price": "3.20$ per kg."
-    },
-    "Potatoes": {
-        "name": "Potatoes",
-        "_id": "005",
-        "type": "Vegetable",
-        "sort": "Russet Potatoes",
-        "imageUrl": "https://www.lovefoodhatewaste.com/sites/default/files/styles/twitter_card_image/public/2022-08/Potatoes-shutterstock-1721688538.jpg?h=1dd3cf61&itok=1oEGDr7w",
-        "company": "Healthy food Company",
-        "price": "0.90$ per kg."
-    },
-    "Oranges": {
-        "name": "Oranges",
-        "_id": "006",
-        "type": "Fruit",
-        "sort": "Valencia Oranges",
-        "imageUrl": "https://www.tastingtable.com/img/gallery/the-science-behind-seedless-oranges/intro-1655473463.jpg",
-        "company": "Orange Hold",
-        "price": "2.50$ per kg."
-    },
-    "Lettuce": {
-        "name": "Lettuce",
-        "_id": "007",
-        "type": "Vegetable",
-        "sort": "Romaine Lettuce",
-        "imageUrl": "https://images.yummy.ph/yummy/uploads/2021/07/iceberglettucevsromainelettuce.jpg",
-        "company": "Healthy food Company",
-        "price": "1.20$ per kg"
-    },
-    "Strawberries": {
-        "name": "Strawberries",
-        "_id": "008",
-        "type": "Fruit",
-        "sort": "June-bearing Strawberries",
-        "imageUrl": "https://images.immediate.co.uk/production/volatile/sites/10/2018/03/2048x1365-Best-strawberries-to-grow-LI1834878-9b05a14.jpg?quality=90&crop=9px,11px,2031px,1354px&resize=940,627",
-        "company": "Beries Store",
-        "price": "4$ per kg."
-    },
-    "Wheat": {
+    "bf2dda28-4a67-4319-9edc-0b3685596e10": {
         "name": "Wheat",
-        "_id": "009",
-        "type": "Agricultural Product",
+        "type": "agricultural",
         "sort": "Hard Red Winter Wheat",
         "imageUrl": "https://www.preventionweb.net/sites/default/files/styles/landscape_16_9/public/2023-06/Shutterstock_1925083001-min.jpg?h=2cf907fb&itok=orFAibF3",
         "company": "The Fabric",
-        "price": "negotiable"
-    },
-    "Bell Peppers": {
-        "name": "Bell Peppers",
-        "_id": "010",
-        "type": "Vegetable",
-        "sort": "Red Bell Peppers",
-        "imageUrl": "https://www.thespruceeats.com/thmb/qC69d7mOmpcPhMr8jK5sSHzKLa0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/what-are-bell-peppers-5216131-horizontal-01_edit-75b04e4b5cd94a2b824c76d3048dc1ea.jpg",
-        "company": "Healthy food Company",
-        "price": "3.50$ per kg."
+        "price": "negotiable",
+        "_id": "bf2dda28-4a67-4319-9edc-0b3685596e10"
     }
 }

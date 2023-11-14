@@ -66,6 +66,14 @@ export default function AddProduct() {
                     </div>
                 </div>
                 <div className={styles.row}>
+                    <div className={styles.col25}>
+                        <label htmlFor="price">Price</label>
+                    </div>
+                    <div className={styles.col75}>
+                        <input type="text" id="price" name="price" placeholder="Price" />
+                    </div>
+                </div>
+                <div className={styles.row}>
                     <input type="submit" value="Submit" />
                 </div>
             </form>
