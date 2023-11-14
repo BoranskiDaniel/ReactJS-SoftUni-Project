@@ -1,8 +1,8 @@
-import Offer from "./Offer";
-import * as productService from "../services/productService";
+import Offer from "../offer/Offer";
+import * as productService from "../../services/productService";
 
 import { useState, useEffect } from "react";
-import ProductCard from "./productCard/ProductCard";
+import ProductCard from "../productCard/ProductCard";
 
 export default function Products() {
     const [isMoreProducts, setIsMoreProducts] = useState(false);

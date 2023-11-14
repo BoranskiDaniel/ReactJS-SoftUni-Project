@@ -1,4 +1,4 @@
-import ForBox from "./ForBox";
+import ForBox from "../forBox/ForBox";
 
 export default function SliderSection() {
     return (

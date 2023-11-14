@@ -1,3 +1,5 @@
+// import MapPage from "./MapPage"
+
 export default function Contacts() {
     return (
         <>
@@ -44,6 +46,7 @@ export default function Contacts() {
                             </div>
                         </div>
                         <div id="map">
+                            {/* < MapPage /> */}
                         </div>
                     </div>
                 </div>

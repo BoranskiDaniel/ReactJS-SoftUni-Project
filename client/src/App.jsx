@@ -1,14 +1,14 @@
 import { Routes, Route } from 'react-router-dom';
 
-import About from "./components/About";
-import Contacts from "./components/Contacts";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
+import About from "./components/about/About";
+import Contacts from "./components/contacts/Contacts";
+import Footer from "./components/footer/Footer";
+import Header from "./components/header/Header";
 // import Loader from "./components/Loader" ;
-import Products from "./components/Products";
+import Products from "./components/products/Products";
 import RegisterForm from "./components/registerForm/RegisterForm";
 import LoginForm from "./components/loginForm/LoginForm";
-import SliderSection from "./components/SliderSection";
+import SliderSection from "./components/header/SliderSection";
 import AddProduct from "./components/addProduct/AddProduct";
 
 function App() {
