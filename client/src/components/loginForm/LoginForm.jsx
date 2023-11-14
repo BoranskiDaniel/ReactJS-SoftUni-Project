@@ -7,16 +7,16 @@ const formInitialState = {
     password: '',
 };
 export default function LoginForm({
-    formRef,
+    // formRef,
 }) {
-    const usernameInputRef = useRef();
+    // const usernameInputRef = useRef();
     // const isMountedRef = useRef(false);
     const [formValues, setFormValues] = useState(formInitialState);
     // const [errors, setErrors] = useState({});
 
-    useEffect(() => {
-        usernameInputRef.current.focus();
-    }, []);
+    // useEffect(() => {
+    //     usernameInputRef.current.focus();
+    // }, []);
 
     // Executes only on update
     // useEffect(() => {
@@ -28,29 +28,28 @@ export default function LoginForm({
 
     const changeHandler = (e) => {
         setFormValues(e.target.value);
-        console.log(formValues);
     };
 
     const resetFormHandler = () => {
         setFormValues(formInitialState);
         // setErrors({});
+        console.log(formValues);
     };
 
-    const submitHandler = (e) => {
-        e.preventDefault();
-        console.log(formValues);
-        resetFormHandler();
-    };
+    // const submitHandler = (e) => {
+    //     e.preventDefault();
+    //     resetFormHandler();
+    // };
 
     return (
         <div className={styles.loginForm}>
             <h1>Login</h1>
 
-            <form ref={formRef} onSubmit={submitHandler}>
+            <form /*</div>ref={formRef} onSubmit={submitHandler}*/>
                 <div>
                     <label htmlFor="username">Username</label>
                     <input
-                        ref={usernameInputRef}
+                        // ref={usernameInputRef}
                         type="text"
                         value={formValues.username}
                         onChange={changeHandler}

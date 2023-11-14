@@ -1,15 +1,32 @@
-import styles from "./AddProduct.module.css"
+import styles from "./AddProduct.module.css";
+import * as productService from "../../services/productService";
+import { useNavigate } from "react-router-dom"
+
 
 export default function AddProduct() {
+    const navigate = useNavigate();
+
+    const productCreateHnalder = async (e) => {
+        e.preventDefault();
+
+        const productData = Object.fromEntries(new FormData(e.currentTarget));
+
+        try {
+            await productService.create(productData);
+            navigate('/products')
+        } catch (error) {
+            throw new Error(`${error}`)
+        }
+    }
     return (
         <div className={styles.container}>
-            <form>
+            <form onSubmit={productCreateHnalder}>
                 <div className={styles.row}>
                     <div className={styles.col25}>
                         <label htmlFor="name">Product</label>
                     </div>
                     <div className={styles.col75}>
-                        <input type="text" id="name" name="product" placeholder="Product.." />
+                        <input type="text" id="name" name="name" placeholder="Product.." />
                     </div>
                 </div>
                 <div className={styles.row}>
@@ -30,6 +47,14 @@ export default function AddProduct() {
                     </div>
                     <div className={styles.col75}>
                         <input type="text" id="sort" name="sort" placeholder="Product sort.." />
+                    </div>
+                </div>
+                <div className={styles.row}>
+                    <div className={styles.col25}>
+                        <label htmlFor="imageUrl">Add image</label>
+                    </div>
+                    <div className={styles.col75}>
+                        <input type="text" id="imageUrl" name="imageUrl" placeholder="imageUrl" />
                     </div>
                 </div>
                 <div className={styles.row}>
