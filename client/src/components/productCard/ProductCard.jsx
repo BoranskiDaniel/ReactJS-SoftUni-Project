@@ -8,6 +8,7 @@ export default function ProductCard({
     imageUrl,
     company,
     price,
+    negotiable
 }) {
 
 
@@ -23,7 +24,7 @@ export default function ProductCard({
                         <p>Type: {type}</p>
                         <p>Sort: {sort}</p>
                         <p>Company: {company}</p>
-                        <p className={styles.price}>Price: {price}</p>
+                        <p className={styles.price}>Price: {price || negotiable}</p>
                         <a className={styles.readMore}>
                             <button className={styles.order}> Order now</button>
                             <svg xmlns="http://www.w3.org/2000/svg" className={styles.icon} viewBox="0 0 20 20" fill="currentColor">

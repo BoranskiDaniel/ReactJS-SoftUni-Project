@@ -50,6 +50,7 @@ export default function Products() {
                                 imageUrl={product.imageUrl}
                                 company={product.company}
                                 price={product.price}
+                                negotiable={product.negotiable}
                             />
                         ))}
                     </div>
