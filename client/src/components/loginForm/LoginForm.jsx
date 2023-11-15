@@ -27,30 +27,34 @@ export default function LoginForm({
     // }, [formValues]);
 
     const changeHandler = (e) => {
-        setFormValues(e.target.value);
+        setFormValues(state => ({
+            ...state,
+            [e.target.name]: e.target.value,
+        }));
     };
 
     const resetFormHandler = () => {
         setFormValues(formInitialState);
         // setErrors({});
-        console.log(formValues);
     };
 
-    // const submitHandler = (e) => {
-    //     e.preventDefault();
-    //     resetFormHandler();
-    // };
+    const submitHandler = (e) => {
+        e.preventDefault();
+        console.log(formValues);
+        resetFormHandler();
+    };
 
     return (
         <div className={styles.loginForm}>
             <h1>Login</h1>
 
-            <form /*</div>ref={formRef} onSubmit={submitHandler}*/>
+            <form /*</div>ref={formRef} */>
                 <div>
                     <label htmlFor="username">Username</label>
                     <input
                         // ref={usernameInputRef}
                         type="text"
+                        name="username"
                         value={formValues.username}
                         onChange={changeHandler}
                     // onBlur={() => console.log('onBlur')}
@@ -60,13 +64,14 @@ export default function LoginForm({
                     <label htmlFor="password">Password</label>
                     <input
                         type="password"
+                        name="password"
                         value={formValues.password}
                         onChange={changeHandler}
                     />
                 </div>
                 <div>
                     {/* <button type="submit" disabled={Object.values(errors).some(x => x)}>Login</button> */}
-                    <button>Login</button>
+                    <button onClick={submitHandler}> Login</button>
                     <button type="button" onClick={resetFormHandler}>Reset</button>
                 </div>
             </form>
