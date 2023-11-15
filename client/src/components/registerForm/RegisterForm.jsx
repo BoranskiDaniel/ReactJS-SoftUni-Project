@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { Link } from "react-router-dom";
 
 import styles from './RegisterForm.module.css';
 
@@ -9,43 +10,43 @@ const formInitialState = {
     repeatPassword: '',
 };
 export default function RegisterForm({
-    formRef
+    // formRef
 }) {
-    const usernameInputRef = useRef();
-    const companyInputRef = useRef();
-    const isMountedRef = useRef(false);
+    // const usernameInputRef = useRef();
+    // const companyInputRef = useRef();
+    // const isMountedRef = useRef(false);
     const [formValues, setFormValues] = useState([formInitialState]);
-    const [errors, setErrors] = useState({});
+    // const [errors, setErrors] = useState({});
 
-    useEffect(() => {
-        usernameInputRef.current.focus();
-    }, []);
-    useEffect(() => {
-        companyInputRef.current.focus();
-    }, []);
+    // useEffect(() => {
+    //     usernameInputRef.current.focus();
+    // }, []);
+    // useEffect(() => {
+    //     companyInputRef.current.focus();
+    // }, []);
 
     // Executes only on update
-    useEffect(() => {
-        if (!isMountedRef.current) {
-            isMountedRef.current = true;
-            return;
-        }
+    // useEffect(() => {
+    //     if (!isMountedRef.current) {
+    //         isMountedRef.current = true;
+    //         return;
+    //     }
 
-        // console.log('Form is updated')
-    }, [formValues]);
+    // console.log('Form is updated')
+    // }, [formValues]);
 
     const changeHandler = (e) => {
-        let value = '';
+        // let value = '';
 
         setFormValues(state => ({
             ...state,
-            [e.target.name]: value,
+            [e.target.name]: e.target.value,
         }));
     };
 
     const resetFormHandler = () => {
         setFormValues(formInitialState);
-        setErrors({});
+        // setErrors({});
     };
 
     const submitHandler = (e) => {
@@ -58,11 +59,11 @@ export default function RegisterForm({
         <div className={styles.registerForm}>
             <h1>Register</h1>
 
-            <form ref={formRef} onSubmit={submitHandler}>
+            <form /*ref={formRef}*/ >
                 <div>
                     <label htmlFor="username">Username</label>
                     <input className={styles.inputText}
-                        ref={usernameInputRef}
+                        // ref={usernameInputRef}
                         type="text"
                         id="username"
                         name="username"
@@ -74,7 +75,7 @@ export default function RegisterForm({
                 <div>
                     <label htmlFor="company">Company</label>
                     <input className={styles.inputText}
-                        ref={companyInputRef}
+                        // ref={companyInputRef}
                         type="text"
                         id="company"
                         name="company"
@@ -104,8 +105,11 @@ export default function RegisterForm({
                     />
                 </div>
                 <div>
-                    <button type="submit" >Register</button>
+                    <button type="submit" onClick={submitHandler}>Register</button>
                     <button type="button" onClick={resetFormHandler}>Reset</button>
+                </div>
+                <div >
+                    <p className={styles.haveAccount}>Already have an account? <Link to="/login"> Login</Link></p>
                 </div>
             </form>
         </div>

@@ -1,12 +1,14 @@
 .registerForm {
     border: black solid 3px;
     padding: 10px;
-    width: 40%;
-    height: 35em;
+    width: 100%;
+    max-width: 380px;
+    height: auto;
     text-align: center;
     margin: auto;
     margin-bottom: 90px;
     margin-top: 90px;
+    background-color: rgb(209, 218, 209);
 }
 
 h1 {
@@ -24,4 +26,11 @@ button {
     width: 100px;
     border: black solid 1px;
     border-radius: 3px;
+}
+
+.haveAccount {
+    color: red;
+    text-align: right;
+    font-size: 15px;
+    text-decoration: overline;
 }

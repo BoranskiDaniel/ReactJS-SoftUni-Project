@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { Link } from "react-router-dom";
 
 import styles from './LoginForm.module.css';
 
@@ -73,6 +74,9 @@ export default function LoginForm({
                     {/* <button type="submit" disabled={Object.values(errors).some(x => x)}>Login</button> */}
                     <button onClick={submitHandler}> Login</button>
                     <button type="button" onClick={resetFormHandler}>Reset</button>
+                </div>
+                <div >
+                    <p className={styles.noAccount}>You don't have an account? <Link to="/register"> Register</Link></p>
                 </div>
             </form>
         </div>

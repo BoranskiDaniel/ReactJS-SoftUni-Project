@@ -8,7 +8,7 @@
     margin: auto;
     margin-bottom: 90px;
     margin-top: 100px;
-    background-color:rgb(209, 218, 209);
+    background-color: rgb(209, 218, 209);
 }
 
 h1 {
@@ -29,4 +29,11 @@ button {
     width: 100px;
     border: black solid 1px;
     border-radius: 3px;
+}
+
+.noAccount {
+    color: red;
+    text-align: right;
+    font-size: 15px;
+    text-decoration: overline;
 }
