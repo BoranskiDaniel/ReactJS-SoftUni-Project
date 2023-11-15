@@ -14,7 +14,7 @@ import AddProduct from "./components/addProduct/AddProduct";
 function App() {
 
     return (
-        <div className="main-layout ">
+        <div className="main-layout">
             {/* <Loader /> */}
             <Header />
 

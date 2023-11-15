@@ -1,14 +1,21 @@
+body {
+    background-image: url("/images/backgr.avif");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .registerForm {
     border: black solid 3px;
     padding: 10px;
     width: 100%;
-    max-width: 380px;
+    max-width: 480px;
     height: auto;
     text-align: center;
     margin: auto;
     margin-bottom: 90px;
     margin-top: 90px;
-    background-color: rgb(209, 218, 209);
+    background-color: rgb(242, 239, 239);
 }
 
 h1 {
@@ -16,8 +23,11 @@ h1 {
 }
 
 .inputText {
-    width: 95%;
-    box-sizing: border-box;
+    max-width: 300px;
+}
+
+label {
+    width: 120px;
 }
 
 button {

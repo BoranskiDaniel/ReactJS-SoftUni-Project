@@ -98,15 +98,6 @@ article:has(:hover, :focus) {
     box-sizing: border-box;
 }
 
-body {
-    margin: 0;
-    padding: 48px 0;
-    font-family: "Figtree", sans-serif;
-    font-size: 1.2rem;
-    line-height: 1.6rem;
-    min-height: 100vh;
-}
-
 .articles {
     display: inline-block;
     grid-template-columns: repeat(3, 300px);
