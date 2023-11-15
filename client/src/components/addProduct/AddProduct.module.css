@@ -60,7 +60,8 @@ input[type=submit]:hover {
 }
 
 .check {
-    padding-top: 30px;
+    padding-top: 25px;
+    margin-left: 25px;
     display: inline-block;
     font-size: 21px;
 }

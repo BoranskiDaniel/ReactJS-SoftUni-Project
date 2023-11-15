@@ -61,7 +61,7 @@ export default function RegisterForm({
 
             <form /*ref={formRef}*/ >
                 <div>
-                    <label htmlFor="username">Username</label>
+                    <label className={styles.label} htmlFor="username">Username</label>
                     <input className={styles.inputText}
                         // ref={usernameInputRef}
                         type="text"
@@ -73,7 +73,7 @@ export default function RegisterForm({
                     />
                 </div>
                 <div>
-                    <label htmlFor="company">Company</label>
+                    <label className={styles.label} htmlFor="company">Company</label>
                     <input className={styles.inputText}
                         // ref={companyInputRef}
                         type="text"
@@ -85,7 +85,7 @@ export default function RegisterForm({
                     />
                 </div>
                 <div>
-                    <label htmlFor="password">Password</label>
+                    <label className={styles.label} htmlFor="password">Password</label>
                     <input className={styles.inputText}
                         type="password"
                         id="password"
@@ -95,7 +95,7 @@ export default function RegisterForm({
                     />
                 </div>
                 <div>
-                    <label htmlFor="repeatPassword">Repeat password</label>
+                    <label className={styles.label} htmlFor="repeatPassword">Repeat password</label>
                     <input className={styles.inputText}
                         type="password"
                         id="repeatPassword"

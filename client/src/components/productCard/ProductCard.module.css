@@ -119,11 +119,15 @@ article:has(:hover, :focus) {
 }
 
 .order {
-    font-size: 25px;
-    padding-top: 20px;
+    font-size: 20px;
+    padding-top: 5px;
     font-style: italic;
     width: auto;
-    border-radius: 10px;
+    border-radius: 7px;
+}
+
+.forOwner{
+    display: block;
 }
 
 @container card (min-width: 380px) {

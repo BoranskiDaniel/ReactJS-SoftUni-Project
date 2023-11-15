@@ -51,9 +51,10 @@ export default function LoginForm({
 
             <form /*</div>ref={formRef} */>
                 <div>
-                    <label htmlFor="username">Username</label>
+                    <label className={styles.label} htmlFor="username">Username</label>
                     <input
                         // ref={usernameInputRef}
+                        className={styles.input}
                         type="text"
                         name="username"
                         value={formValues.username}
@@ -62,8 +63,9 @@ export default function LoginForm({
                     />
                 </div>
                 <div>
-                    <label htmlFor="password">Password</label>
+                    <label className={styles.label} htmlFor="password">Password</label>
                     <input
+                        className={styles.input}
                         type="password"
                         name="password"
                         value={formValues.password}

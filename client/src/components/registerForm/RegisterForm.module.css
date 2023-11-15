@@ -24,9 +24,10 @@ h1 {
 
 .inputText {
     max-width: 300px;
+    width: 100%;
 }
 
-label {
+.label {
     width: 120px;
 }
 

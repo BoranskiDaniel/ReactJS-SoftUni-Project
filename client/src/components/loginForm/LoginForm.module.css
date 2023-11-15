@@ -16,14 +16,14 @@ h1 {
 }
 
 
-input {
+.input {
     padding: 10px;
     margin: 10px;
     max-width: 300px;
     width: 300px;
 }
 
-label {
+.label {
     width: 120px;
 }
 
