@@ -2,7 +2,15 @@
     box-sizing: border-box;
 } */
 
-input[type=text],
+.textField {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    margin-left: 5px;
+}
+
 input[type=number],
 select,
 textarea {
@@ -71,8 +79,8 @@ input[type=submit]:hover {
 }
 
 .check {
-    padding-top: 25px;
-    margin-left: 25px;
+    padding-top: 10px;
+    margin-left: 15px;
     display: inline-block;
     font-size: 21px;
 }

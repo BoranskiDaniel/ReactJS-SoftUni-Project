@@ -39,6 +39,7 @@ export default function AddProduct() {
                     </div>
                     <div className={styles.col75}>
                         <input
+                        className={styles.textField}
                             ref={usernameInputRef}
                             type="text"
                             id="product"
@@ -66,6 +67,7 @@ export default function AddProduct() {
                     </div>
                     <div className={styles.col75}>
                         <input
+                        className={styles.textField}
                             type="text"
                             id="sort"
                             name="sort"
@@ -80,6 +82,7 @@ export default function AddProduct() {
                     </div>
                     <div className={styles.col75}>
                         <input
+                        className={styles.textField}
                             type="text"
                             id="imageUrl"
                             name="imageUrl"
@@ -94,6 +97,7 @@ export default function AddProduct() {
                     </div>
                     <div className={styles.col75}>
                         <input
+                        className={styles.textField}
                             type="text"
                             id="company"
                             name="company"
@@ -108,6 +112,7 @@ export default function AddProduct() {
                     </div>
                     <div className={styles.col75}>
                         <input
+                        className={styles.textField}
                             type="text"
                             id="email"
                             name="email"

@@ -4,20 +4,20 @@ import { Link } from "react-router-dom";
 import styles from './LoginForm.module.css';
 
 const formInitialState = {
-    username: '',
-    password: '',
+    username: "",
+    password: "",
 };
 export default function LoginForm({
     // formRef,
 }) {
-    // const usernameInputRef = useRef();
+    const usernameInputRef = useRef();
     // const isMountedRef = useRef(false);
     const [formValues, setFormValues] = useState(formInitialState);
-    // const [errors, setErrors] = useState({});
+    const [errors, setErrors] = useState({});
 
-    // useEffect(() => {
-    //     usernameInputRef.current.focus();
-    // }, []);
+    useEffect(() => {
+        usernameInputRef.current.focus();
+    }, []);
 
     // Executes only on update
     // useEffect(() => {
@@ -36,7 +36,7 @@ export default function LoginForm({
 
     const resetFormHandler = () => {
         setFormValues(formInitialState);
-        // setErrors({});
+        setErrors({});
     };
 
     const submitHandler = (e) => {
@@ -44,7 +44,18 @@ export default function LoginForm({
         console.log(formValues);
         resetFormHandler();
     };
-
+    const simpleValidator = () => {
+        if (formValues.username === "" || formValues.password === "") {
+            setErrors(state => ({
+                ...state,
+                msg: "Incorrect username or password",
+            }));
+        } else {
+            if (errors.username || errors.password) {
+                setErrors(state => ({ ...state, msg: "" }));
+            }
+        }
+    }
     return (
         <div className={styles.loginForm}>
             <h1>Login</h1>
@@ -53,27 +64,31 @@ export default function LoginForm({
                 <div>
                     <label className={styles.label} htmlFor="username">Username</label>
                     <input
-                        // ref={usernameInputRef}
-                        className={styles.input}
+                        ref={usernameInputRef}
                         type="text"
                         name="username"
                         value={formValues.username}
                         onChange={changeHandler}
-                    // onBlur={() => console.log('onBlur')}
+                        onBlur={simpleValidator}
+                        className={errors.msg && styles.inputError}
                     />
                 </div>
                 <div>
                     <label className={styles.label} htmlFor="password">Password</label>
                     <input
-                        className={styles.input}
                         type="password"
                         name="password"
                         value={formValues.password}
                         onChange={changeHandler}
+                        onBlur={simpleValidator}
+                        className={errors.msg && styles.inputError}
                     />
+                    {errors.msg && (
+                        <p className={styles.errorMessage}>{errors.msg}</p>
+                    )}
+
                 </div>
                 <div>
-                    {/* <button type="submit" disabled={Object.values(errors).some(x => x)}>Login</button> */}
                     <button onClick={submitHandler}> Login</button>
                     <button type="button" onClick={resetFormHandler}>Reset</button>
                 </div>

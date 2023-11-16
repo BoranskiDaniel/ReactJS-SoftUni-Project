@@ -16,7 +16,8 @@ h1 {
 }
 
 
-.input {
+input[type="text"],
+input[type="password"]{
     padding: 10px;
     margin: 10px;
     max-width: 300px;
@@ -25,7 +26,7 @@ h1 {
 
 .label {
     width: 120px;
-}
+}   
 
 button {
     margin: 10px;
@@ -36,8 +37,18 @@ button {
 }
 
 .noAccount {
-    color: red;
+    color: rgb(13, 0, 255);
     text-align: right;
     font-size: 15px;
     text-decoration: overline;
+}
+
+.errorMessage {
+    color: red;
+    font-size: 0.9em;
+    margin: 0 0 10px;
+}
+
+.inputError {
+    border: 1px solid red;
 }
