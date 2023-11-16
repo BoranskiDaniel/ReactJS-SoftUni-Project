@@ -40,19 +40,27 @@ export default function LoginForm({
     };
 
     const submitHandler = (e) => {
-        e.preventDefault();
-        console.log(formValues);
-        resetFormHandler();
+        if (formValues.username === "" || formValues.password === "") {
+            e.preventDefault();
+            setErrors(state => ({
+                ...state,
+                username: "You must enter username and password"
+            }));
+        } else {
+            e.preventDefault();
+            console.log(formValues);
+            resetFormHandler();
+        }
     };
     const simpleValidator = () => {
         if (formValues.username === "" || formValues.password === "") {
             setErrors(state => ({
                 ...state,
-                msg: "Incorrect username or password",
+                username: "You must enter username and password",
             }));
         } else {
-            if (errors.username || errors.password) {
-                setErrors(state => ({ ...state, msg: "" }));
+            if (errors.username) {
+                setErrors(state => ({ ...state, username: "" }));
             }
         }
     }
@@ -66,27 +74,28 @@ export default function LoginForm({
                     <input
                         ref={usernameInputRef}
                         type="text"
+                        id="username"
                         name="username"
                         value={formValues.username}
                         onChange={changeHandler}
                         onBlur={simpleValidator}
-                        className={errors.msg && styles.inputError}
+                        className={errors.username && styles.inputError}
                     />
                 </div>
                 <div>
                     <label className={styles.label} htmlFor="password">Password</label>
                     <input
                         type="password"
+                        id="password"
                         name="password"
                         value={formValues.password}
                         onChange={changeHandler}
                         onBlur={simpleValidator}
-                        className={errors.msg && styles.inputError}
+                        className={errors.username && styles.inputError}
                     />
-                    {errors.msg && (
-                        <p className={styles.errorMessage}>{errors.msg}</p>
+                    {errors.username && (
+                        <p className={styles.errorMessage}>{errors.username}</p>
                     )}
-
                 </div>
                 <div>
                     <button onClick={submitHandler}> Login</button>
