@@ -1,4 +1,6 @@
+// import Order from "../order/Order";
 import styles from "./ProductCard.module.css";
+// import { Link } from "react-router-dom"
 
 export default function ProductCard({
     name,
@@ -10,7 +12,11 @@ export default function ProductCard({
     negotiable
 }) {
 
-
+    // const orderHandler = () => {
+    //     // <Link to="/order"> Order </Link>
+    //     // <Order />
+    //     console.log("here");
+    // }
     return (
         <div className={styles.articles}>
             <article>

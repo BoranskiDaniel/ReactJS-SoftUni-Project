@@ -5,10 +5,6 @@ import { useState, useEffect } from "react";
 import ProductCard from "../productCard/ProductCard";
 
 export default function Products() {
-    const [isMoreProducts, setIsMoreProducts] = useState(false);
-    const showMoreProducts = () => {
-        setIsMoreProducts(!isMoreProducts);
-    };
 
     const [showProduct, setShowPorduct] = useState([]);
     // const showProductClick = () => {
@@ -23,40 +19,32 @@ export default function Products() {
     return (
         <div id="product" className="product">
             <Offer />
-            <div className="col-md-12">
-                <button className="read-more" onClick={showMoreProducts}>See More</button>
-            </div>
-            {isMoreProducts && (
-                <>
-                    <div className="container">
-                        <div className="container">
-                            <div className="row">
-                                <div className="col-md-12">
-                                    <div className="title">
-                                        <h2>Moon <strong className="black"> products</strong></h2>
-                                    </div>
-                                </div>
+            <div className="container">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-12">
+                            <div className="title">
+                                <h2>Moon <strong className="black"> products</strong></h2>
                             </div>
                         </div>
                     </div>
-                    <div className="container-fluid">
-                        {showProduct.map((product) => (
-                            <ProductCard
-                                key={product._id}
-                                _id={product._id}
-                                name={product.name}
-                                type={product.type}
-                                sort={product.sort}
-                                imageUrl={product.imageUrl}
-                                company={product.company}
-                                price={product.price}
-                                negotiable={product.negotiable}
-                            />
-                        ))}
-                    </div>
-                </>
-            )
-            }
+                </div>
+            </div>
+            <div className="container-fluid">
+                {showProduct.map((product) => (
+                    <ProductCard
+                        key={product._id}
+                        _id={product._id}
+                        name={product.name}
+                        type={product.type}
+                        sort={product.sort}
+                        imageUrl={product.imageUrl}
+                        company={product.company}
+                        price={product.price}
+                        negotiable={product.negotiable}
+                    />
+                ))}
+            </div>
         </div >
     );
 };
