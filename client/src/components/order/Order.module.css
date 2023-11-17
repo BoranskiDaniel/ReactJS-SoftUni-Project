@@ -1,0 +1,43 @@
+body {
+    background-image: url("/images/backgr.avif");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.registerForm {
+    border: black solid 3px;
+    padding: 10px;
+    width: 100%;
+    max-width: 480px;
+    height: auto;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 90px;
+    margin-top: 90px;
+    background-color: rgb(242, 239, 239);
+}
+
+h1 {
+    margin: 20px;
+}
+
+.inputText {
+    max-width: 300px;
+    width: 100%;
+}
+
+.label {
+    width: 120px;
+}
+
+button {
+    margin: 10px;
+    padding: 5px;
+    width: 100px;
+    border: black solid 1px;
+    border-radius: 3px;
+}
+
+
+

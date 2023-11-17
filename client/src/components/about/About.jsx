@@ -1,5 +1,4 @@
 import { useState } from "react";
-// import styles from "/styles.css?url&inline";
 
 export default function About() {
     const [isShowMore, setIsShowMore] = useState(false);

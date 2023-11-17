@@ -10,7 +10,7 @@ import RegisterForm from "./components/registerForm/RegisterForm";
 import LoginForm from "./components/loginForm/LoginForm";
 import SliderSection from "./components/header/SliderSection";
 import AddProduct from "./components/addProduct/AddProduct";
-import Order from './components/order/Order';
+// import Order from './components/order/Order';
 
 function App() {
 
@@ -28,7 +28,7 @@ function App() {
                 <Route path='/login' element={<LoginForm />} />
                 <Route path='/register' element={<RegisterForm />} />
                 <Route path='/addProduct' element={<AddProduct />} />
-                <Route path='/products/order' element={<Order />} />
+                {/* <Route path='/products/order' element={<Order />} /> */}
 
                 {/* add Map ! */}
             </Routes>
