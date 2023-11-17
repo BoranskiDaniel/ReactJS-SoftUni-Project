@@ -1907,6 +1907,7 @@ ul.social_icon li a:hover {
 
 /** about **/
 .about {
+     background-color: white;
      padding: 90px 0;
 }
 
@@ -2454,7 +2455,7 @@ ul.Links_footer li {
 }
 
 .footer .address .submit-btn {
-     padding: 8px 45px;
+     /* padding: 8px 45px; */
      border: #30880d solid 1px;
      background: #30880d;
      color: #fff;

@@ -42,9 +42,6 @@ export default function RegisterForm({
             setErrors(state => ({
                 ...state,
                 username: "All of the fields are required!",
-                company: "All of the fields are required!",
-                password: "All of the fields are required!",
-                repeatPassword: "All of the fields are required!",
             }));
         } else {
             e.preventDefault();
@@ -63,9 +60,6 @@ export default function RegisterForm({
             setErrors(state => ({
                 ...state,
                 username: "All of the fields are required!",
-                company: "All of the fields are required!",
-                password: "All of the fields are required!",
-                repeatPassword: "All of the fields are required!",
             }));
         } else {
             if (errors.username) {
@@ -74,6 +68,14 @@ export default function RegisterForm({
         }
     }
 
+    // const passwordValidation = () => {
+    //     if (formValues.password === formValues.repeatPassword) {
+    //         console.log('good');
+
+    //     } else {
+    //         console.log("not good");
+    //     }
+    // }
     return (
         <div className={styles.registerForm}>
             <h1>Register</h1>
@@ -132,7 +134,7 @@ export default function RegisterForm({
                     <p className={styles.errorMessage}>{errors.username}</p>
                 )}
                 <div>
-                    <button onClick={submitHandler}>Register</button>
+                    <button type="submit" onClick={submitHandler}>Register</button>
                     <button type="button" onClick={resetFormHandler}>Reset</button>
                 </div>
                 <div >
