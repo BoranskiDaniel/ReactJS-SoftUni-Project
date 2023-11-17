@@ -45,3 +45,13 @@ button {
     font-size: 15px;
     text-decoration: overline;
 }
+
+.errorMessage {
+    color: red;
+    font-size: 0.9em;
+    margin: 0 0 10px;
+}
+
+.inputError {
+    border: 1px solid red;
+}

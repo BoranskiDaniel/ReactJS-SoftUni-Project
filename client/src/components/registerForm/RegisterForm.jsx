@@ -10,34 +10,16 @@ const formInitialState = {
     repeatPassword: '',
 };
 export default function RegisterForm({
-    // formRef
 }) {
-    // const usernameInputRef = useRef();
-    // const companyInputRef = useRef();
-    // const isMountedRef = useRef(false);
+    const usernameInputRef = useRef();
     const [formValues, setFormValues] = useState([formInitialState]);
-    // const [errors, setErrors] = useState({});
+    const [errors, setErrors] = useState({});
 
-    // useEffect(() => {
-    //     usernameInputRef.current.focus();
-    // }, []);
-    // useEffect(() => {
-    //     companyInputRef.current.focus();
-    // }, []);
-
-    // Executes only on update
-    // useEffect(() => {
-    //     if (!isMountedRef.current) {
-    //         isMountedRef.current = true;
-    //         return;
-    //     }
-
-    // console.log('Form is updated')
-    // }, [formValues]);
+    useEffect(() => {
+        usernameInputRef.current.focus();
+    }, []);
 
     const changeHandler = (e) => {
-        // let value = '';
-
         setFormValues(state => ({
             ...state,
             [e.target.name]: e.target.value,
@@ -46,66 +28,111 @@ export default function RegisterForm({
 
     const resetFormHandler = () => {
         setFormValues(formInitialState);
-        // setErrors({});
+        setErrors({});
     };
 
     const submitHandler = (e) => {
-        e.preventDefault();
-        console.log(formValues);
-        resetFormHandler();
+        if (
+            formValues.username === "" ||
+            formValues.company === "" ||
+            formValues.password === "" ||
+            formValues.repeatPassword === ""
+        ) {
+            e.preventDefault();
+            setErrors(state => ({
+                ...state,
+                username: "All of the fields are required!",
+                company: "All of the fields are required!",
+                password: "All of the fields are required!",
+                repeatPassword: "All of the fields are required!",
+            }));
+        } else {
+            e.preventDefault();
+            console.log(formValues);
+            resetFormHandler();
+        }
     };
+
+    const simpleValidation = () => {
+        if (
+            formValues.username === "" ||
+            formValues.company === "" ||
+            formValues.password === "" ||
+            formValues.repeatPassword === ""
+        ) {
+            setErrors(state => ({
+                ...state,
+                username: "All of the fields are required!",
+                company: "All of the fields are required!",
+                password: "All of the fields are required!",
+                repeatPassword: "All of the fields are required!",
+            }));
+        } else {
+            if (errors.username) {
+                setErrors(state => ({ ...state, username: "" }));
+            }
+        }
+    }
 
     return (
         <div className={styles.registerForm}>
             <h1>Register</h1>
 
-            <form /*ref={formRef}*/ >
+            <form>
                 <div>
                     <label className={styles.label} htmlFor="username">Username</label>
-                    <input className={styles.inputText}
-                        // ref={usernameInputRef}
+                    <input className={errors.username && styles.inputError}
+                        ref={usernameInputRef}
                         type="text"
                         id="username"
                         name="username"
                         value={formValues.username}
                         onChange={changeHandler}
-                    // onBlur={() => console.log('onBlur')}
+                        onBlur={simpleValidation}
+                        required
                     />
                 </div>
                 <div>
                     <label className={styles.label} htmlFor="company">Company</label>
-                    <input className={styles.inputText}
-                        // ref={companyInputRef}
+                    <input className={errors.username && styles.inputError}
                         type="text"
                         id="company"
                         name="company"
                         value={formValues.company}
                         onChange={changeHandler}
-                    // onBlur={() => console.log('onBlur')}
+                        onBlur={simpleValidation}
+                        required
                     />
                 </div>
                 <div>
                     <label className={styles.label} htmlFor="password">Password</label>
-                    <input className={styles.inputText}
+                    <input className={errors.username && styles.inputError}
                         type="password"
                         id="password"
                         name="password"
                         value={formValues.password}
                         onChange={changeHandler}
+                        onBlur={simpleValidation}
+                        required
                     />
                 </div>
                 <div>
                     <label className={styles.label} htmlFor="repeatPassword">Repeat password</label>
-                    <input className={styles.inputText}
+                    <input className={errors.username && styles.inputError}
                         type="password"
                         id="repeatPassword"
                         name="repeatPassword"
                         value={formValues.repeatPassword}
                         onChange={changeHandler}
+                        onBlur={simpleValidation}
+                        required
                     />
                 </div>
+                {errors.username && (
+                    <p className={styles.errorMessage}>{errors.username}</p>
+                )}
                 <div>
-                    <button type="submit" onClick={submitHandler}>Register</button>
+                    <button onClick={submitHandler}>Register</button>
                     <button type="button" onClick={resetFormHandler}>Reset</button>
                 </div>
                 <div >

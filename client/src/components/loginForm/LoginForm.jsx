@@ -8,24 +8,14 @@ const formInitialState = {
     password: "",
 };
 export default function LoginForm({
-    // formRef,
 }) {
     const usernameInputRef = useRef();
-    // const isMountedRef = useRef(false);
     const [formValues, setFormValues] = useState(formInitialState);
     const [errors, setErrors] = useState({});
 
     useEffect(() => {
         usernameInputRef.current.focus();
     }, []);
-
-    // Executes only on update
-    // useEffect(() => {
-    //     if (!isMountedRef.current) {
-    //         isMountedRef.current = true;
-    //         return;
-    //     }
-    // }, [formValues]);
 
     const changeHandler = (e) => {
         setFormValues(state => ({
@@ -44,7 +34,8 @@ export default function LoginForm({
             e.preventDefault();
             setErrors(state => ({
                 ...state,
-                username: "You must enter username and password"
+                username: "You must enter username and password!",
+                password: "You must enter username and password!",
             }));
         } else {
             e.preventDefault();
@@ -56,7 +47,7 @@ export default function LoginForm({
         if (formValues.username === "" || formValues.password === "") {
             setErrors(state => ({
                 ...state,
-                username: "You must enter username and password",
+                username: "You must enter username and password!",
             }));
         } else {
             if (errors.username) {
@@ -68,7 +59,7 @@ export default function LoginForm({
         <div className={styles.loginForm}>
             <h1>Login</h1>
 
-            <form /*</div>ref={formRef} */>
+            <form>
                 <div>
                     <label className={styles.label} htmlFor="username">Username</label>
                     <input
