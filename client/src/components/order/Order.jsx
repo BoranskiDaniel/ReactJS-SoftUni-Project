@@ -2,35 +2,50 @@ import styles from "./Order.module.css"
 
 import { useForm } from "../../hooks/useForm";
 
-export default function Order({ closeHandler }) {
-    const { formValues, onChangeHandler, onSubmit } = useForm({ text: "" })
+export default function Order({ name, closeHandler }) {
+    const { formValues, onChangeHandler, onSubmit } = useForm({quantity:'', email:'', delivery:''})
     return (
-        <div className={styles.backdrop} onClick={closeHandler} >
+        <div className={styles.backdrop} >
             <form className={styles.mainOrder} onSubmit={onSubmit}>
+                <h2>{name}</h2>
                 <div>
-                    <label className={styles.label} htmlFor="username">Username</label>
+                    <label className={styles.label} htmlFor="quantity ">Quantity: (kg.)</label>
                     <input
-                        type="text"
-                        id="username"
-                        name="username"
-                        value={formValues.name}
+                        style={{ width: '300px', marginLeft: '20px' }}
+                        type="number"
+                        id="quantity"
+                        name="quantity"
+                        value={formValues.quantity}
                         onChange={onChangeHandler}
                         required
                     />
                 </div>
                 <div>
-                    <label className={styles.label} htmlFor="company">Company</label>
+                    <label className={styles.label} htmlFor="email ">Your email:</label>
                     <input
+                        style={{ width: '300px', marginLeft: '20px' }}
                         type="text"
-                        id="company"
-                        name="company"
-                        value={formValues.name}
+                        id="email"
+                        name="email"
+                        value={formValues.email}
                         onChange={onChangeHandler}
                         required
                     />
                 </div>
                 <div>
-                    <button type="submit">Register</button>
+                    <label className={styles.label} htmlFor="delivery">Delivery address:</label>
+                    <input
+                        style={{ width: '300px', marginLeft: '20px' }}
+                        type="text"
+                        id="delivery"
+                        name="delivery"
+                        value={formValues.delivery}
+                        onChange={onChangeHandler}
+                        required
+                    />
+                </div>
+                <div>
+                    <button type="submit">Order</button>
                     <button type="button" onClick={closeHandler}>Close</button>
                 </div>
             </form>

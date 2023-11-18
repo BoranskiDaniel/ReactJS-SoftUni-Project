@@ -9,7 +9,7 @@ export default function ProductCard({
     imageUrl,
     company,
     price,
-    negotiable
+    negotiable,
 }) {
     const [order, setOrder] = useState(false);
 
@@ -53,7 +53,7 @@ export default function ProductCard({
                 </article>
             </div>
             
-            {order && <Order closeHandler={closeHandler} />}
+            {order && <Order name={name} closeHandler={closeHandler} />}
         </>
     );
 };
