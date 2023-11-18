@@ -1,7 +1,6 @@
 import Order from "../order/Order";
 import styles from "./ProductCard.module.css";
-// import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function ProductCard({
     name,
@@ -15,11 +14,20 @@ export default function ProductCard({
     const [order, setOrder] = useState(false);
 
     const orderHandler = () => {
-        setOrder(true);
+        if (order === false) {
+            setOrder(true);
+        } else {
+            setOrder(false);
+        };
     }
+
+    const closeHandler = () => {
+        setOrder(false)
+    }
+
     return (
         <>
-            <div className={styles.articles}>
+            <div className={styles.articles} >
                 <article onClick={orderHandler}>
                     <div className={styles.articleWrapper}>
                         <figure className={styles.cardFigure}>
@@ -44,7 +52,8 @@ export default function ProductCard({
                     </div>
                 </article>
             </div>
-            {order && <Order />}
+            
+            {order && <Order closeHandler={closeHandler} />}
         </>
     );
 };
