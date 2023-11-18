@@ -14,10 +14,16 @@ export const create = async (productData) => {
         method: 'POST',
         headers: {
             'content-type': 'application/json'
-        }, 
+        },
         body: JSON.stringify(productData)
     })
     const result = await response.json();
 
     return result;
+}
+
+export const del = async (productId) => {
+    await fetch(`${baseUrl}/${productId}`, {
+        method: 'DELETE'
+    });
 }

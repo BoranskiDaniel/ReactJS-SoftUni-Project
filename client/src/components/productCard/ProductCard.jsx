@@ -1,8 +1,11 @@
 import Order from "../order/Order";
+import { ProductContext } from "../../contex/productContext";
+
 import styles from "./ProductCard.module.css";
-import { useState, useEffect } from "react";
+import { useState, useContext } from "react";
 
 export default function ProductCard({
+    _id,
     name,
     type,
     sort,
@@ -25,6 +28,7 @@ export default function ProductCard({
         setOrder(false)
     }
 
+    const {onDeleteHandler} = useContext(ProductContext)
     return (
         <>
             <div className={styles.articles} >
@@ -45,12 +49,12 @@ export default function ProductCard({
                                 </svg>
                             </a>
                             <div className={styles.forOwner}>
-                                <button > Edit</button>
-                                <button > Detelete</button>
                             </div>
                         </div>
                     </div>
                 </article>
+                <button > Edit</button>
+                <button onClick={() => onDeleteHandler(_id)}> Detelete</button>
             </div>
 
             {order && <Order name={name} company={company} closeHandler={closeHandler} />}
