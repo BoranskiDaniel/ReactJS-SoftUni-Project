@@ -52,8 +52,8 @@ export default function ProductCard({
                     </div>
                 </article>
             </div>
-            
-            {order && <Order name={name} closeHandler={closeHandler} />}
+
+            {order && <Order name={name} company={company} closeHandler={closeHandler} />}
         </>
     );
 };

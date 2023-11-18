@@ -2,12 +2,13 @@ import styles from "./Order.module.css"
 
 import { useForm } from "../../hooks/useForm";
 
-export default function Order({ name, closeHandler }) {
-    const { formValues, onChangeHandler, onSubmit } = useForm({quantity:'', email:'', delivery:''})
+export default function Order({ name, company, closeHandler }) {
+    const { formValues, onChangeHandler, onSubmit } = useForm({ quantity: '', email: '', delivery: '' })
     return (
         <div className={styles.backdrop} >
             <form className={styles.mainOrder} onSubmit={onSubmit}>
-                <h2>{name}</h2>
+                <h1>{name}</h1>
+                <h4>{company}</h4>
                 <div>
                     <label className={styles.label} htmlFor="quantity ">Quantity: (kg.)</label>
                     <input
