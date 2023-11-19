@@ -14,7 +14,6 @@ import AddProduct from "./components/addProduct/AddProduct";
 // import Order from './components/order/Order';
 
 function App() {
-    const [currentForm, setCurrentForm] = useState("login")
     return (
         <div className="main-layout">
             {/* <Loader /> */}
@@ -25,12 +24,11 @@ function App() {
                 <Route path='/' element={<SliderSection />} />
                 <Route path='/about' element={<About />} />
                 <Route path='/products' element={<Products />} />
-                {currentForm === "login" ?
-                    <Route path='/myProducts' element={<MyProducts />} /> &&
-                    <Route path='/addProduct' element={<AddProduct />} /> :
-                    <Route path='/login' element={<LoginForm />} /> &&
-                    <Route path='/register' element={<RegisterForm />} />
-                }
+                <Route path='/myProducts' element={<MyProducts />} />
+                <Route path='/addProduct' element={<AddProduct />} />
+                <Route path='/login' element={<LoginForm />} />
+                <Route path='/register' element={<RegisterForm />} />
+
                 {/* <Route path='/products/order' element={<Order />} /> */}
 
                 {/* add Map ! */}
@@ -40,5 +38,6 @@ function App() {
         </div>
     )
 }
+
 
 export default App

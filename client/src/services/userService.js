@@ -15,3 +15,18 @@ export const getOne = async (userId) => {
 
     return result;
 }
+
+export const login = async () => {
+    const response = await fetch(baseUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body),
+    })
+    const result = await response.json();
+
+    console.log(result);
+
+    return result;
+}

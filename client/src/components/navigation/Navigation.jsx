@@ -2,14 +2,14 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 export default function Navigation() {
-    const [currentForm, setCurrentForm] = useState("login")
+    const [currentForm, setCurrentForm] = useState(false)
     return (
         <nav className="main-menu">
             <ul>
                 <li className="active"> <Link to="/"> Home  </Link></li>
                 <li> <Link to="/about"> About </Link></li>
                 <li> <Link to="/products"> Products </Link></li>
-                {currentForm === "login" ?
+                {currentForm ?
                     <>
                         <li> <Link to="/addProduct"> Add product </Link></li>
                         <li> <Link to="/myProducts"> My products </Link></li>

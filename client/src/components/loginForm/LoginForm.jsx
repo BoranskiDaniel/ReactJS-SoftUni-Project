@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link } from "react-router-dom";
+import * as userService from "../../services/userService"
 
 import styles from './LoginForm.module.css';
 
@@ -8,13 +9,20 @@ const formInitialState = {
     password: "",
 };
 export default function LoginForm({
+    setCurrentForm
 }) {
     const usernameInputRef = useRef();
     const [formValues, setFormValues] = useState(formInitialState);
     const [errors, setErrors] = useState({});
+    const [users, setUsers] = useState([]);
 
     useEffect(() => {
         usernameInputRef.current.focus();
+    }, []);
+    useEffect(() => {
+        userService.login()
+            .then(result => setUsers(result))
+            .catch(err => console.log(err))
     }, []);
 
     const changeHandler = (e) => {
@@ -39,6 +47,7 @@ export default function LoginForm({
             }));
         } else {
             e.preventDefault();
+            // setCurrentForm(true)
             console.log(formValues);
             resetFormHandler();
         }
@@ -55,6 +64,7 @@ export default function LoginForm({
             }
         }
     }
+
     return (
         <div className={styles.loginForm}>
             <h1>Login</h1>
@@ -89,7 +99,7 @@ export default function LoginForm({
                     )}
                 </div>
                 <div>
-                    <button onClick={submitHandler}> Login</button>
+                    <button type="submit" onClick={submitHandler}> Login</button>
                     <button type="button" onClick={resetFormHandler}>Reset</button>
                 </div>
                 <div >
