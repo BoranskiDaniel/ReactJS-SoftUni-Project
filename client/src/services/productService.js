@@ -9,6 +9,13 @@ export const getAll = async () => {
     return data;
 };
 
+export const getMyProduct = async (ownerId) => {
+    const response = await fetch(`${baseUrl}/${ownerId}`);
+    const result = await response.json();
+
+    return result;
+}
+
 export const create = async (productData) => {
     const response = await fetch(baseUrl, {
         method: 'POST',

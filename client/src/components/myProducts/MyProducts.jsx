@@ -1,6 +1,17 @@
-// import MapPage from "./MapPage"
+import * as productService from "../../services/productService";
+import { useState, useEffect } from "react";
 
-export default function Contacts() {
+export default function MyProducts({
+    ownerId
+}) {
+    const [showMyProduct, setShowMyPorduct] = useState([]);
+    useEffect(() => {
+        productService.getMyProduct(ownerId)
+            .then(result => setShowMyPorduct(result))
+            .catch(err => console.log(err))
+    }, []);
+
+
     return (
         <>
             <div id="contact" className="contact">
