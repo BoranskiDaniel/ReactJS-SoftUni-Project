@@ -1,5 +1,5 @@
 import Order from "../order/Order";
-import { ProductContext } from "../../contex/productContext";
+import AuthContext from "../../contex/AuthContext";
 
 import styles from "./ProductCard.module.css";
 import { useState, useContext } from "react";
@@ -28,7 +28,7 @@ export default function ProductCard({
         setOrder(false)
     }
 
-    const {onDeleteHandler} = useContext(ProductContext)
+    const { onDeleteHandler } = useContext(AuthContext)
     return (
         <>
             <div className={styles.articles} >

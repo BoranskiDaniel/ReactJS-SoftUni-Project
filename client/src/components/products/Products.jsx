@@ -1,6 +1,6 @@
 import Offer from "../offer/Offer";
 import * as productService from "../../services/productService";
-import { ProductContext } from "../../contex/productContext";
+import { ProductContext } from "../../contex/ProductContext";
 
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";

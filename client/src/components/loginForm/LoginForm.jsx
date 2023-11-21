@@ -1,106 +1,103 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useContext } from 'react';
 import { Link } from "react-router-dom";
-import * as userService from "../../services/userService"
+import AuthContext from "../../contex/AuthContext"
 
 import styles from './LoginForm.module.css';
+import { useForm } from '../../hooks/useForm';
 
-const formInitialState = {
-    username: "",
-    password: "",
+// const formInitialState = {
+//     email: "",
+//     password: "",
+// };
+
+const LoginFormKyes = {
+    Email: 'email',
+    Password: 'password',
 };
 export default function LoginForm({
-    setCurrentForm
 }) {
-    const usernameInputRef = useRef();
-    const [formValues, setFormValues] = useState(formInitialState);
-    const [errors, setErrors] = useState({});
-    const [users, setUsers] = useState([]);
+    const { loginSubmitHandler } = useContext(AuthContext);
+    const { values, onChange, onSubmit } = useForm(loginSubmitHandler, {
+        [LoginFormKyes.Email]: '',
+        [LoginFormKyes.Password]: '',
+    })
+    const emailInputRef = useRef();
+    // const [formValues, setFormValues] = useState(formInitialState);
+    // const [errors, setErrors] = useState({});
 
-    useEffect(() => {
-        usernameInputRef.current.focus();
-    }, []);
-    useEffect(() => {
-        userService.login()
-            .then(result => setUsers(result))
-            .catch(err => console.log(err))
-    }, []);
+    // useEffect(() => {
+    //     emailInputRef.current.focus();
+    // }, []);
 
-    const changeHandler = (e) => {
-        setFormValues(state => ({
-            ...state,
-            [e.target.name]: e.target.value,
-        }));
-    };
+    // const resetFormHandler = () => {
+    //     setFormValues(formInitialState);
+    //     setErrors({});
+    // };
 
-    const resetFormHandler = () => {
-        setFormValues(formInitialState);
-        setErrors({});
-    };
-
-    const submitHandler = (e) => {
-        if (formValues.username === "" || formValues.password === "") {
-            e.preventDefault();
-            setErrors(state => ({
-                ...state,
-                username: "You must enter username and password!",
-                password: "You must enter username and password!",
-            }));
-        } else {
-            e.preventDefault();
-            // setCurrentForm(true)
-            console.log(formValues);
-            resetFormHandler();
-        }
-    };
-    const simpleValidator = () => {
-        if (formValues.username === "" || formValues.password === "") {
-            setErrors(state => ({
-                ...state,
-                username: "You must enter username and password!",
-            }));
-        } else {
-            if (errors.username) {
-                setErrors(state => ({ ...state, username: "" }));
-            }
-        }
-    }
+    // const submitHandler = (e) => {
+    //     if (formValues.email === "" || formValues.password === "") {
+    //         e.preventDefault();
+    //         setErrors(state => ({
+    //             ...state,
+    //             email: "You must enter email and password!",
+    //             password: "You must enter email and password!",
+    //         }));
+    //     } else {
+    //         e.preventDefault();
+    //         console.log(formValues);
+    //         resetFormHandler();
+    //     }
+    // };
+    // const simpleValidator = () => {
+    //     if (formValues.email === "" || formValues.password === "") {
+    //         setErrors(state => ({
+    //             ...state,
+    //             email: "You must enter email and password!",
+    //         }));
+    //     } else {
+    //         if (errors.email) {
+    //             setErrors(state => ({ ...state, email: "" }));
+    //         }
+    //     }
+    // }
 
     return (
         <div className={styles.loginForm}>
             <h1>Login</h1>
 
-            <form>
+            <form onSubmit={onSubmit}>
                 <div>
-                    <label className={styles.label} htmlFor="username">Username</label>
+                    <label className={styles.label} htmlFor="email">Email:</label>
                     <input
-                        ref={usernameInputRef}
-                        type="text"
-                        id="username"
-                        name="username"
-                        value={formValues.username}
-                        onChange={changeHandler}
-                        onBlur={simpleValidator}
-                        className={errors.username && styles.inputError}
+                        ref={emailInputRef}
+                        type="email"
+                        id="email"
+                        name={LoginFormKyes.Email}
+                        value={values[LoginFormKyes.Email]}
+                        placeholder='example@abc.de'
+                        onChange={onChange}
+                    // onBlur={simpleValidator}
+                    // className={errors.email && styles.inputError}
                     />
                 </div>
                 <div>
-                    <label className={styles.label} htmlFor="password">Password</label>
+                    <label className={styles.label} htmlFor="password">Password:</label>
                     <input
                         type="password"
                         id="password"
-                        name="password"
-                        value={formValues.password}
-                        onChange={changeHandler}
-                        onBlur={simpleValidator}
-                        className={errors.username && styles.inputError}
+                        name={LoginFormKyes.Password}
+                        value={values[LoginFormKyes.Password]}
+                        onChange={onChange}
+                    // onBlur={simpleValidator}
+                    // className={errors.email && styles.inputError}
                     />
-                    {errors.username && (
-                        <p className={styles.errorMessage}>{errors.username}</p>
-                    )}
+                    {/* {errors.email && (
+                        <p className={styles.errorMessage}>{errors.email}</p>
+                    )} */}
                 </div>
                 <div>
-                    <button type="submit" onClick={submitHandler}> Login</button>
-                    <button type="button" onClick={resetFormHandler}>Reset</button>
+                    <button type="submit" /*onClick={submitHandler}*/> Login</button>
+                    <button type="button" /*onClick={resetFormHandler}*/>Reset</button>
                 </div>
                 <div >
                     <p className={styles.noAccount}>You don't have an account? <Link to="/register"> Register</Link></p>

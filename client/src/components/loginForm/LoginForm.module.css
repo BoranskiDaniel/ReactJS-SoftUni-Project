@@ -17,7 +17,8 @@ h1 {
 
 
 input[type="text"],
-input[type="password"]{
+input[type="password"],
+input[type="email"] {
     padding: 10px;
     margin: 10px;
     max-width: 300px;
@@ -26,7 +27,7 @@ input[type="password"]{
 
 .label {
     width: 120px;
-}   
+}
 
 button {
     margin: 10px;
