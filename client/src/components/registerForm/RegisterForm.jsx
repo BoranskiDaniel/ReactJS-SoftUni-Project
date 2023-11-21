@@ -1,42 +1,44 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useContext } from 'react';
 import { Link } from "react-router-dom";
+import { useForm } from '../../hooks/useForm';
 
 import styles from './RegisterForm.module.css';
+import AuthContext from '../../contex/AuthContext';
 
-const formInitialState = {
-    username: '',
-    company: '',
-    password: '',
-    repeatPassword: '',
+const RegisterFormKeys = {
+    Email: 'email',
+    Company: 'company',
+    Password: 'password',
+    ConfirmPassword: 'confirm-password',
 };
 export default function RegisterForm({
 }) {
+    const { registerSubmitHandler } = useContext(AuthContext);
+
+    const { values, onChange, onSubmit } = useForm(registerSubmitHandler, {
+        [RegisterFormKeys.Email]: '',
+        [RegisterFormKeys.Company]: '',
+        [RegisterFormKeys.Password]: '',
+        [RegisterFormKeys.ConfirmPassword]: ''
+    });
     const usernameInputRef = useRef();
-    const [formValues, setFormValues] = useState([formInitialState]);
     const [errors, setErrors] = useState({});
+
 
     useEffect(() => {
         usernameInputRef.current.focus();
     }, []);
 
-    const changeHandler = (e) => {
-        setFormValues(state => ({
-            ...state,
-            [e.target.name]: e.target.value,
-        }));
-    };
-
     const resetFormHandler = () => {
-        setFormValues(formInitialState);
         setErrors({});
     };
 
     const submitHandler = (e) => {
         if (
-            formValues.username === "" ||
-            formValues.company === "" ||
-            formValues.password === "" ||
-            formValues.repeatPassword === ""
+            RegisterFormKeys.Email === '' ||
+            RegisterFormKeys.Company === '' ||
+            RegisterFormKeys.Password === '' ||
+            RegisterFormKeys.ConfirmPassword === ''
         ) {
             e.preventDefault();
             setErrors(state => ({
@@ -45,17 +47,16 @@ export default function RegisterForm({
             }));
         } else {
             e.preventDefault();
-            console.log(formValues);
             resetFormHandler();
         }
     };
 
     const simpleValidation = () => {
         if (
-            formValues.username === "" ||
-            formValues.company === "" ||
-            formValues.password === "" ||
-            formValues.repeatPassword === ""
+            RegisterFormKeys.Email === '' ||
+            RegisterFormKeys.Company === '' ||
+            RegisterFormKeys.Password === '' ||
+            RegisterFormKeys.ConfirmPassword === ''
         ) {
             setErrors(state => ({
                 ...state,
@@ -80,52 +81,53 @@ export default function RegisterForm({
         <div className={styles.registerForm}>
             <h1>Register</h1>
 
-            <form>
+            <form onSubmit={onSubmit}>
                 <div>
-                    <label className={styles.label} htmlFor="username">Username</label>
+                    <label className={styles.label} htmlFor="email">Email:</label>
                     <input className={errors.username && styles.inputError}
                         ref={usernameInputRef}
-                        type="text"
-                        id="username"
-                        name="username"
-                        value={formValues.username}
-                        onChange={changeHandler}
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder='example@abc.de'
+                        value={values[RegisterFormKeys.Email]}
+                        onChange={onChange}
                         onBlur={simpleValidation}
                         required
                     />
                 </div>
                 <div>
-                    <label className={styles.label} htmlFor="company">Company</label>
+                    <label className={styles.label} htmlFor="company">Company:</label>
                     <input className={errors.username && styles.inputError}
                         type="text"
                         id="company"
                         name="company"
-                        value={formValues.company}
-                        onChange={changeHandler}
+                        value={values[RegisterFormKeys.Company]}
+                        onChange={onChange}
                         onBlur={simpleValidation}
                         required
                     />
                 </div>
                 <div>
-                    <label className={styles.label} htmlFor="password">Password</label>
+                    <label className={styles.label} htmlFor="password">Password:</label>
                     <input className={errors.username && styles.inputError}
                         type="password"
                         id="password"
                         name="password"
-                        value={formValues.password}
-                        onChange={changeHandler}
+                        value={values[RegisterFormKeys.Password]}
+                        onChange={onChange}
                         onBlur={simpleValidation}
                         required
                     />
                 </div>
                 <div>
-                    <label className={styles.label} htmlFor="repeatPassword">Repeat password</label>
+                    <label className={styles.label} htmlFor="confirm-password">Confirm password:</label>
                     <input className={errors.username && styles.inputError}
                         type="password"
-                        id="repeatPassword"
-                        name="repeatPassword"
-                        value={formValues.repeatPassword}
-                        onChange={changeHandler}
+                        id="confirm-password"
+                        name="confirm-password"
+                        value={values[RegisterFormKeys.ConfirmPassword]}
+                        onChange={onChange}
                         onBlur={simpleValidation}
                         required
                     />
@@ -134,7 +136,7 @@ export default function RegisterForm({
                     <p className={styles.errorMessage}>{errors.username}</p>
                 )}
                 <div>
-                    <button type="submit" onClick={submitHandler}>Register</button>
+                    <button type="submit" /*onClick={submitHandler}*/>Register</button>
                     <button type="button" onClick={resetFormHandler}>Reset</button>
                 </div>
                 <div >

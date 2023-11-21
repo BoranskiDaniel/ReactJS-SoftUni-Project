@@ -33,8 +33,18 @@ function App() {
         navigate('/')
     };
 
+    const registerSubmitHandler = async (values) => {
+        const result = await authService.register(values.email, values.password);
+        setAuth(result);
+
+        localStorage.setItem('accessToken', result.accessToken);
+
+        navigate('/')
+    }
+
     const values = {
         loginSubmitHandler,
+        registerSubmitHandler,
         email: auth.email,
         isAuthenticated: !!auth.accessToken,
     }
