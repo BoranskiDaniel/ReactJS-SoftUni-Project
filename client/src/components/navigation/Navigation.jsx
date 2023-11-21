@@ -5,7 +5,7 @@ import AuthContext from "../../contex/AuthContext";
 export default function Navigation() {
     const {
         isAuthenticated,
-        username
+        email
     } = useContext(AuthContext);
 
     return (
@@ -18,8 +18,8 @@ export default function Navigation() {
                     <>
                         <li> <Link to="/addProduct"> Add product </Link></li>
                         <li> <Link to="/myProducts"> My products </Link></li>
-                        <li><a href="#logout">Logout</a></li>
-                        <span>Hello {username}</span>
+                        <li><Link to="/logout">Logout</Link></li>
+                        <span>Hello {email}</span>
                     </>
                 )}
                 {!isAuthenticated && (

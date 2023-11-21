@@ -13,6 +13,7 @@ import RegisterForm from "./components/registerForm/RegisterForm";
 import LoginForm from "./components/loginForm/LoginForm";
 import SliderSection from "./components/header/SliderSection";
 import AddProduct from "./components/addProduct/AddProduct";
+import Logout from './components/Logout';
 // import Loader from "./components/Loader" ;
 
 function App() {
@@ -42,9 +43,15 @@ function App() {
         navigate('/')
     }
 
+    const logoutHandler = () => {
+        setAuth({});
+        localStorage.removeItem('accessToken')
+    }
+
     const values = {
         loginSubmitHandler,
         registerSubmitHandler,
+        logoutHandler,
         email: auth.email,
         isAuthenticated: !!auth.accessToken,
     }
@@ -63,6 +70,7 @@ function App() {
                     <Route path='/addProduct' element={<AddProduct />} />
                     <Route path='/login' element={<LoginForm />} />
                     <Route path='/register' element={<RegisterForm />} />
+                    <Route path='/logout' element={<Logout />} />
 
                     {/* add Map ! */}
                 </Routes>

@@ -44,5 +44,10 @@ export const register = async (email, password) => {
     return result;
 }
 
+export const logout = async () => {
+    await fetch(`${baseUrl}/logout`, {
+        method: 'GET',
+    })
+}
 
 
