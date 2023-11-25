@@ -16,6 +16,6 @@ export default function Logout() {
             })
             .catch(() => { navigate('/') })
     }, []);
-    
+
     return null;
 }

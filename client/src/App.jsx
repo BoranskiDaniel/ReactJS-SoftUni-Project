@@ -21,7 +21,7 @@ function App() {
     const [auth, setAuth] = useState(() => {
         localStorage.removeItem('accessToken');
 
-        return {}
+        return {};
     });
 
     const loginSubmitHandler = async (values) => {
@@ -30,6 +30,7 @@ function App() {
         setAuth(result);
 
         localStorage.setItem('accessToken', result.accessToken);
+        console.log(result.accessToken);
 
         navigate('/')
     };
