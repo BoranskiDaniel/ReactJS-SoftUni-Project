@@ -30,7 +30,6 @@ function App() {
         setAuth(result);
 
         localStorage.setItem('accessToken', result.accessToken);
-        console.log(result.accessToken);
 
         navigate('/')
     };

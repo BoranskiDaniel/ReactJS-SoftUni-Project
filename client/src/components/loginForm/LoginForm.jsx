@@ -5,10 +5,10 @@ import AuthContext from "../../contex/AuthContext"
 import styles from './LoginForm.module.css';
 import { useForm } from '../../hooks/useForm';
 
-// const formInitialState = {
-//     email: "",
-//     password: "",
-// };
+const formInitialState = {
+    email: "",
+    password: "",
+};
 
 const LoginFormKyes = {
     Email: 'email',
@@ -17,22 +17,19 @@ const LoginFormKyes = {
 export default function LoginForm({
 }) {
     const { loginSubmitHandler } = useContext(AuthContext);
-    const { values, onChange, onSubmit } = useForm(loginSubmitHandler, {
+    const { values, onChange, onSubmit, resetFormHandler } = useForm(loginSubmitHandler, {
         [LoginFormKyes.Email]: '',
         [LoginFormKyes.Password]: '',
     })
     const emailInputRef = useRef();
-    // const [formValues, setFormValues] = useState(formInitialState);
-    // const [errors, setErrors] = useState({});
+    const [formValues, setFormValues] = useState({ [LoginFormKyes.Email]: "", [LoginFormKyes.Password]: "" });
+    const [errors, setErrors] = useState({});
 
-    // useEffect(() => {
-    //     emailInputRef.current.focus();
-    // }, []);
+    useEffect(() => {
+        emailInputRef.current.focus();
+    }, []);
 
-    // const resetFormHandler = () => {
-    //     setFormValues(formInitialState);
-    //     setErrors({});
-    // };
+    
 
     // const submitHandler = (e) => {
     //     if (formValues.email === "" || formValues.password === "") {
@@ -76,8 +73,8 @@ export default function LoginForm({
                         value={values[LoginFormKyes.Email]}
                         placeholder='example@abc.de'
                         onChange={onChange}
-                    // onBlur={simpleValidator}
-                    // className={errors.email && styles.inputError}
+                        // onBlur={simpleValidator}
+                        className={errors.email && styles.inputError}
                     />
                 </div>
                 <div>
@@ -88,16 +85,16 @@ export default function LoginForm({
                         name={LoginFormKyes.Password}
                         value={values[LoginFormKyes.Password]}
                         onChange={onChange}
-                    // onBlur={simpleValidator}
-                    // className={errors.email && styles.inputError}
+                        // onBlur={simpleValidator}
+                        className={errors.email && styles.inputError}
                     />
-                    {/* {errors.email && (
+                    {errors.email && (
                         <p className={styles.errorMessage}>{errors.email}</p>
-                    )} */}
+                    )}
                 </div>
                 <div>
                     <button type="submit" /*onClick={submitHandler}*/> Login</button>
-                    <button type="button" /*onClick={resetFormHandler}*/>Reset</button>
+                    <button type="button" onClick={resetFormHandler}>Reset</button>
                 </div>
                 <div >
                     <p className={styles.noAccount}>You don't have an account? <Link to="/register"> Register</Link></p>
