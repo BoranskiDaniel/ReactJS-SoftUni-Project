@@ -14,6 +14,8 @@ import LoginForm from "./components/loginForm/LoginForm";
 import SliderSection from "./components/header/SliderSection";
 import AddProduct from "./components/addProduct/AddProduct";
 import Logout from './components/Logout';
+import NotFound from './components/notFound/notFound';
+
 // import Loader from "./components/Loader" ;
 
 function App() {
@@ -71,6 +73,8 @@ function App() {
                     <Route path='/login' element={<LoginForm />} />
                     <Route path='/register' element={<RegisterForm />} />
                     <Route path='/logout' element={<Logout />} />
+                    <Route path='/*' element={<NotFound />} />
+
 
                     {/* add Map ! */}
                 </Routes>

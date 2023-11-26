@@ -1,0 +1,45 @@
+
+.logo404 {
+    margin-top: 100px;
+    margin-left: 40%;
+    left: 0;
+    right: 0;
+    top: 16vmin;
+    width: 30vmin;
+}
+
+.title {
+    color: white;
+    font-family: "Nunito", sans-serif;
+    font-weight: 600;
+    text-align: center;
+    font-size: 5vmin;
+    margin-top: 31vmin;
+}
+
+
+.subtitle {
+    color: rgb(9, 4, 4);
+    font-family: "Nunito", sans-serif;
+    font-weight: 400;
+    text-align: center;
+    font-size: 3.5vmin;
+    margin-top: -16vmin;
+    margin-bottom: 9vmin;
+}
+
+.btnBack {
+    background-color: rgb(249, 249, 249);
+    border: 1px solid white;
+    color: rgb(12, 10, 10);
+    height: 5vmin;
+    padding: 12px;
+    font-family: "Nunito", sans-serif;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btn-back:hover {
+    background: white;
+    color: #4D007D;
+}

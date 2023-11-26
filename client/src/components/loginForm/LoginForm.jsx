@@ -22,14 +22,13 @@ export default function LoginForm({
         [LoginFormKyes.Password]: '',
     })
     const emailInputRef = useRef();
-    const [formValues, setFormValues] = useState({ [LoginFormKyes.Email]: "", [LoginFormKyes.Password]: "" });
+    const [formValues, setFormValues] = useState(formInitialState);
     const [errors, setErrors] = useState({});
 
     useEffect(() => {
         emailInputRef.current.focus();
     }, []);
 
-    
 
     // const submitHandler = (e) => {
     //     if (formValues.email === "" || formValues.password === "") {
@@ -41,22 +40,22 @@ export default function LoginForm({
     //         }));
     //     } else {
     //         e.preventDefault();
-    //         console.log(formValues);
     //         resetFormHandler();
     //     }
     // };
-    // const simpleValidator = () => {
-    //     if (formValues.email === "" || formValues.password === "") {
-    //         setErrors(state => ({
-    //             ...state,
-    //             email: "You must enter email and password!",
-    //         }));
-    //     } else {
-    //         if (errors.email) {
-    //             setErrors(state => ({ ...state, email: "" }));
-    //         }
-    //     }
-    // }
+    // console.log(errors);
+
+    const simpleValidator = () => {
+        if (formValues.email === "" || formValues.password === "") {
+            setErrors(state => ({
+                ...state,
+                email: "You must enter email and password!",
+            }));
+        } else {
+            setErrors(state => ({ ...state, email: "" }));
+            resetFormHandler();
+        }
+    }
 
     return (
         <div className={styles.loginForm}>
@@ -73,7 +72,7 @@ export default function LoginForm({
                         value={values[LoginFormKyes.Email]}
                         placeholder='example@abc.de'
                         onChange={onChange}
-                        // onBlur={simpleValidator}
+                        onBlur={simpleValidator}
                         className={errors.email && styles.inputError}
                     />
                 </div>
@@ -85,7 +84,7 @@ export default function LoginForm({
                         name={LoginFormKyes.Password}
                         value={values[LoginFormKyes.Password]}
                         onChange={onChange}
-                        // onBlur={simpleValidator}
+                        onBlur={simpleValidator}
                         className={errors.email && styles.inputError}
                     />
                     {errors.email && (
