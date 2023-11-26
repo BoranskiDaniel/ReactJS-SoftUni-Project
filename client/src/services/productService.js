@@ -1,4 +1,5 @@
 const baseUrl = "http://localhost:3030/data/products";
+const token = localStorage.getItem('accessToken');
 
 export const getAll = async () => {
     const response = await fetch(baseUrl);
@@ -16,11 +17,20 @@ export const getMyProduct = async (ownerId) => {
     return result;
 }
 
+export const getOne = async (_id) => {
+    const response = await fetch(`${baseUrl}/${_id}`);
+
+    const result = await response.json();
+
+    return result;
+}
+
 export const create = async (productData) => {
     const response = await fetch(baseUrl, {
         method: 'POST',
         headers: {
-            'content-type': 'application/json'
+            'content-type': 'application/json',
+            'X-Authorization': token
         },
         body: JSON.stringify(productData)
     })
@@ -29,8 +39,20 @@ export const create = async (productData) => {
     return result;
 }
 
-export const del = async (productId) => {
-    await fetch(`${baseUrl}/${productId}`, {
-        method: 'DELETE'
+export const edit = async (_id, productData) => {
+    const response = await fetch(baseUrl, {
+        body: JSON.stringify(productData)
+    })
+    const result = await response.json();
+
+    return result;
+}
+
+export const del = async (_id) => {
+    await fetch(`${baseUrl}/${_id}`, {
+        method: 'DELETE',
+        headers: {
+            'X-Authorization': token
+        },
     });
 }

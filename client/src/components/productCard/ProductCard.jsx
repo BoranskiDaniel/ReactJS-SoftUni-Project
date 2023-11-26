@@ -1,4 +1,5 @@
 import Order from "../order/Order";
+import { Link } from "react-router-dom";
 
 import styles from "./ProductCard.module.css";
 import { useState, useContext } from "react";
@@ -14,6 +15,7 @@ export default function ProductCard({
     price,
     negotiable,
 }) {
+    const baseUrl = 'http://localhost:3030/users';
     const [order, setOrder] = useState(false);
 
     const orderHandler = () => {
@@ -53,8 +55,14 @@ export default function ProductCard({
                         </div>
                     </div>
                 </article>
-                <button > Edit</button>
-                <button onClick={() => onDeleteHandler(_id)}> Detelete</button>
+
+                <div>
+                    <button>
+                        <Link to={(`/products/:_id/edit`, { _id })} > Edit</Link>
+                    </button>
+                    <button onClick={() => onDeleteHandler(_id)}> Detelete</button>
+                </div>
+
             </div>
 
             {order && <Order name={name} company={company} closeHandler={closeHandler} />}
