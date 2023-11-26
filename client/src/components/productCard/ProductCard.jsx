@@ -58,7 +58,7 @@ export default function ProductCard({
 
                 <div>
                     <button>
-                        <Link to={(`/products/:_id/edit`, { _id })} > Edit</Link>
+                        <Link to={(`/products/${_id}/edit`)} > Edit</Link>
                     </button>
                     <button onClick={() => onDeleteHandler(_id)}> Detelete</button>
                 </div>

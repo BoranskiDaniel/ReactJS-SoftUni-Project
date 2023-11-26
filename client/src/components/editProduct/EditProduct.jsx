@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import * as productService from "../../services/productService";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
 
+import styles from "../editProduct/EditProduct.module.css"
 export default function EditProduct() {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const { _id } = useParams();
     const [product, setProduct] = useState({
         product: '',
         type: '',
@@ -34,6 +36,8 @@ export default function EditProduct() {
 
     const { values, onChange, onSubmit } = useForm(editProductHandler, product)
 
+    console.log(product);
+
     return (
         <div className={styles.container}>
             <form onSubmit={onSubmit}>
@@ -44,12 +48,11 @@ export default function EditProduct() {
                     <div className={styles.col75}>
                         <input
                             className={styles.textField}
-                            ref={usernameInputRef}
                             type="text"
                             id="product"
                             name="product"
                             placeholder="Product"
-                            value={values.product}
+                            value={product.product}
                             onChange={onChange}
                             required
                         />
@@ -78,7 +81,7 @@ export default function EditProduct() {
                             id="sort"
                             name="sort"
                             placeholder="Product sort"
-                            value={values.sort}
+                            value={product.sort}
                             onChange={onChange}
                             required
                         />
@@ -95,7 +98,7 @@ export default function EditProduct() {
                             id="imageUrl"
                             name="imageUrl"
                             placeholder="imageUrl"
-                            value={values.imageUrl}
+                            value={product.imageUrl}
                             onChange={onChange}
                             required
                         />
@@ -112,7 +115,7 @@ export default function EditProduct() {
                             id="company"
                             name="company"
                             placeholder="Company name"
-                            value={values.company}
+                            value={product.company}
                             onChange={onChange}
                             required
                         />
@@ -129,7 +132,7 @@ export default function EditProduct() {
                             id="email"
                             name="email"
                             placeholder="Email for orders"
-                            value={values.email}
+                            value={product.email}
                             onChange={onChange}
                             required
                         />
@@ -145,13 +148,13 @@ export default function EditProduct() {
                             id="price"
                             name="price"
                             placeholder="Price"
-                            value={values.price}
+                            value={product.price}
                             onChange={onChange}
-                            disabled={checked}
+                            // disabled={checked}
                             required
                         />
                     </div>
-                    <input
+                    {/* <input
                         className={styles.check}
                         type="checkbox"
                         id="negotiable"
@@ -159,7 +162,7 @@ export default function EditProduct() {
                         value="negotiable"
                         onChange={onCheckChange}
                     />
-                    <label className={styles.check} htmlFor="negotiable"> Negotiable </label>
+                    <label className={styles.check} htmlFor="negotiable"> Negotiable </label> */}
                 </div>
                 <div className={styles.row}>
                     <input type="submit" value="Submit" />

@@ -18,7 +18,13 @@ export const getMyProduct = async (ownerId) => {
 }
 
 export const getOne = async (_id) => {
-    const response = await fetch(`${baseUrl}/${_id}`);
+    const response = await fetch(`${baseUrl}/${_id}`, {
+        method: 'GET',
+        headers: {
+            'content-type': 'application/json',
+            // 'X-Authorization': token
+        },
+    });
 
     const result = await response.json();
 
@@ -40,7 +46,12 @@ export const create = async (productData) => {
 }
 
 export const edit = async (_id, productData) => {
-    const response = await fetch(baseUrl, {
+    const response = await fetch(`${baseUrl}/${_id}`, {
+        method: 'PUT',
+        headers: {
+            'content-type': 'application/json',
+            'X-Authorization': token
+        },
         body: JSON.stringify(productData)
     })
     const result = await response.json();
