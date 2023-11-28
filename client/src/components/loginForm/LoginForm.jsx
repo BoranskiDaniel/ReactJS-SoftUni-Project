@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import AuthContext from "../../contex/AuthContext"
 
 import styles from './LoginForm.module.css';
-import { useForm } from '../../hooks/useForm';
+import useForm from '../../hooks/useForm';
 
 const formInitialState = {
     email: "",

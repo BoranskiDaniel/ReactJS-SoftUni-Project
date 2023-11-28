@@ -6,7 +6,7 @@ export const login = async (email, password) => {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'X-Authorization': token
+            // 'X-Authorization': token
         },
         body: JSON.stringify({ email, password }),
     });
@@ -47,8 +47,8 @@ export const register = async (email, password) => {
     return result;
 }
 
-export const logout = async () => {
-    const response = await fetch(`${baseUrl}/logout`, {
+export const logout = () => {
+    const response = fetch(`${baseUrl}/logout`, {
         method: 'GET',
         headers: {
             'X-Authorization': token
@@ -58,7 +58,7 @@ export const logout = async () => {
         return {};
     }
 
-    const result = await response.json();
+    const result = response.json();
 
     if (!response.ok) {
         throw result;

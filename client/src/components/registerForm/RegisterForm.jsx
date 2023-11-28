@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useContext } from 'react';
 import { Link } from "react-router-dom";
-import { useForm } from '../../hooks/useForm';
+import useForm from '../../hooks/useForm';
 
 import styles from './RegisterForm.module.css';
 import AuthContext from '../../contex/AuthContext';

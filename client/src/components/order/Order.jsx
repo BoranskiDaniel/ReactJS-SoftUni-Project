@@ -1,6 +1,6 @@
 import styles from "./Order.module.css"
 
-import { useForm } from "../../hooks/useForm";
+import useForm from "../../hooks/useForm";
 
 export default function Order({ name, company, closeHandler }) {
     const { formValues, onChangeHandler, onSubmit } = useForm({ quantity: '', email: '', delivery: '' })

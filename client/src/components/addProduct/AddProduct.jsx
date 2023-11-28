@@ -1,12 +1,28 @@
 import styles from "./AddProduct.module.css";
 import * as productService from "../../services/productService";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 
 
 export default function AddProduct() {
     const navigate = useNavigate();
     const usernameInputRef = useRef();
+    const [checked, setChecked] = useState(false);
+    const { productId } = useParams();
+    const [product, setProduct] = useState({
+        product: '',
+        type: '',
+        sort: '',
+        imageUrl: '',
+        company: '',
+        email: '',
+        price: '',
+        negotiable: '',
+    })
+
+    useEffect(() => {
+        usernameInputRef.current.focus();
+    }, []);
 
     const productCreateHandler = async (e) => {
         e.preventDefault();
@@ -21,14 +37,15 @@ export default function AddProduct() {
         }
     }
 
-    useEffect(() => {
-        usernameInputRef.current.focus();
-    }, []);
-
-    const [checked, setChecked] = useState(false);
     const onCheckChange = () => {
         setChecked(!checked);
+    };
 
+    const onChange = (e) => {
+        setProduct(state => ({
+            ...state,
+            [e.target.name]: e.target.value
+        }));
     }
     return (
         <div className={styles.container}>
@@ -44,6 +61,8 @@ export default function AddProduct() {
                             type="text"
                             id="product"
                             name="product"
+                            value={product.product}
+                            onChange={onChange}
                             placeholder="Product"
                             required
                         />
@@ -54,7 +73,7 @@ export default function AddProduct() {
                         <label htmlFor="type">Type:</label>
                     </div>
                     <div className={styles.col75}>
-                        <select className={styles.selectType} id="type" name="type">
+                        <select className={styles.selectType} id="type" name="type" onChange={onChange}>
                             <option value="vegetable">Vegetable</option>
                             <option value="fruit">Fruit</option>
                             <option value="agricultural">Agricultural Product</option>
@@ -71,6 +90,8 @@ export default function AddProduct() {
                             type="text"
                             id="sort"
                             name="sort"
+                            value={product.sort}
+                            onChange={onChange}
                             placeholder="Product sort"
                             required
                         />
@@ -86,6 +107,8 @@ export default function AddProduct() {
                             type="text"
                             id="imageUrl"
                             name="imageUrl"
+                            value={product.imageUrl}
+                            onChange={onChange}
                             placeholder="imageUrl"
                             required
                         />
@@ -101,6 +124,8 @@ export default function AddProduct() {
                             type="text"
                             id="company"
                             name="company"
+                            value={product.company}
+                            onChange={onChange}
                             placeholder="Company name"
                             required
                         />
@@ -116,6 +141,8 @@ export default function AddProduct() {
                             type="text"
                             id="email"
                             name="email"
+                            value={product.email}
+                            onChange={onChange}
                             placeholder="Email for orders"
                             required
                         />
@@ -131,6 +158,8 @@ export default function AddProduct() {
                             id="price"
                             name="price"
                             placeholder="Price"
+                            value={product.price}
+                            onChange={onChange}
                             disabled={checked}
                             required
                         />
@@ -140,13 +169,13 @@ export default function AddProduct() {
                         type="checkbox"
                         id="negotiable"
                         name="negotiable"
-                        value="negotiable"
+                        value={product.negotiable}
                         onChange={onCheckChange}
                     />
                     <label className={styles.check} htmlFor="negotiable"> Negotiable </label>
                 </div>
                 <div className={styles.row}>
-                    <input type="submit" value="Submit" />
+                    <input type="submit" value="Add Product" />
                 </div>
             </form>
         </div>

@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import * as productService from "../../services/productService";
 import { useNavigate, useParams } from "react-router-dom";
-import { useForm } from "../../hooks/useForm";
 
+import * as productService from "../../services/productService";
 import styles from "../editProduct/EditProduct.module.css"
+
 export default function EditProduct() {
     const navigate = useNavigate();
-    const { _id } = useParams();
+    const { productId } = useParams();
     const [product, setProduct] = useState({
         product: '',
         type: '',
@@ -15,18 +15,23 @@ export default function EditProduct() {
         company: '',
         email: '',
         price: '',
+        negotiable: '',
     })
 
     useEffect(() => {
-        productService.getOne(_id)
+        productService.getOne(productId)
             .then(result => {
                 setProduct(result);
             });
-    }, [_id]);
+    }, [productId]);
 
-    const editProductHandler = async (values) => {
+    const editProductHandler = async (e) => {
+        e.preventDefault();
+
+        const values = Object.fromEntries(new FormData(e.currentTarget));
+
         try {
-            await productService.edit(_id, values);
+            await productService.edit(productId, values);
 
             navigate('/products');
         } catch (err) {
@@ -34,13 +39,16 @@ export default function EditProduct() {
         }
     }
 
-    const { values, onChange, onSubmit } = useForm(editProductHandler, product)
-
-    console.log(product);
+    const onChange = (e) => {
+        setProduct(state => ({
+            ...state,
+            [e.target.name]: e.target.value
+        }));
+    };
 
     return (
         <div className={styles.container}>
-            <form onSubmit={onSubmit}>
+            <form onSubmit={editProductHandler}>
                 <div className={styles.row}>
                     <div className={styles.col25}>
                         <label htmlFor="product">Product:</label>
@@ -63,7 +71,7 @@ export default function EditProduct() {
                         <label htmlFor="type">Type:</label>
                     </div>
                     <div className={styles.col75}>
-                        <select className={styles.selectType} id="type" name="type">
+                        <select className={styles.selectType} id="type" onChange={onChange} name="type">
                             <option value="vegetable">Vegetable</option>
                             <option value="fruit">Fruit</option>
                             <option value="agricultural">Agricultural Product</option>
@@ -154,18 +162,18 @@ export default function EditProduct() {
                             required
                         />
                     </div>
-                    {/* <input
+                    <input
                         className={styles.check}
                         type="checkbox"
                         id="negotiable"
                         name="negotiable"
-                        value="negotiable"
-                        onChange={onCheckChange}
+                        value={product.negotiable}
+                        onChange={onChange}
                     />
-                    <label className={styles.check} htmlFor="negotiable"> Negotiable </label> */}
+                    <label className={styles.check} htmlFor="negotiable"> Negotiable </label>
                 </div>
                 <div className={styles.row}>
-                    <input type="submit" value="Submit" />
+                    <input type="submit" value="Edit Product" />
                 </div>
             </form>
         </div>
