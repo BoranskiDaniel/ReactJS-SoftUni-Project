@@ -6,7 +6,6 @@ export const login = async (email, password) => {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            // 'X-Authorization': token
         },
         body: JSON.stringify({ email, password }),
     });
@@ -29,7 +28,6 @@ export const register = async (email, password) => {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'X-Authorization': token
         },
         body: JSON.stringify({ email, password }),
     });

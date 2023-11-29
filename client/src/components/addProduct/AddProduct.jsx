@@ -1,6 +1,6 @@
 import styles from "./AddProduct.module.css";
 import * as productService from "../../services/productService";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 
 
@@ -8,9 +8,8 @@ export default function AddProduct() {
     const navigate = useNavigate();
     const usernameInputRef = useRef();
     const [checked, setChecked] = useState(false);
-    const { productId } = useParams();
     const [product, setProduct] = useState({
-        product: '',
+        name: '',
         type: '',
         sort: '',
         imageUrl: '',
@@ -59,11 +58,11 @@ export default function AddProduct() {
                             className={styles.textField}
                             ref={usernameInputRef}
                             type="text"
-                            id="product"
-                            name="product"
-                            value={product.product}
+                            id="name"
+                            name="name"
+                            value={product.name}
                             onChange={onChange}
-                            placeholder="Product"
+                            placeholder="Product name"
                             required
                         />
                     </div>

@@ -6,9 +6,9 @@ import styles from "../editProduct/EditProduct.module.css"
 
 export default function EditProduct() {
     const navigate = useNavigate();
-    const { productId } = useParams();
+    const { _id } = useParams();
     const [product, setProduct] = useState({
-        product: '',
+        name: '',
         type: '',
         sort: '',
         imageUrl: '',
@@ -19,11 +19,11 @@ export default function EditProduct() {
     })
 
     useEffect(() => {
-        productService.getOne(productId)
+        productService.getOne(_id)
             .then(result => {
                 setProduct(result);
             });
-    }, [productId]);
+    }, [_id]);
 
     const editProductHandler = async (e) => {
         e.preventDefault();
@@ -31,7 +31,7 @@ export default function EditProduct() {
         const values = Object.fromEntries(new FormData(e.currentTarget));
 
         try {
-            await productService.edit(productId, values);
+            await productService.edit(_id, values);
 
             navigate('/products');
         } catch (err) {
@@ -51,16 +51,16 @@ export default function EditProduct() {
             <form onSubmit={editProductHandler}>
                 <div className={styles.row}>
                     <div className={styles.col25}>
-                        <label htmlFor="product">Product:</label>
+                        <label htmlFor="name">Product:</label>
                     </div>
                     <div className={styles.col75}>
                         <input
                             className={styles.textField}
                             type="text"
-                            id="product"
-                            name="product"
-                            placeholder="Product"
-                            value={product.product}
+                            id="name"
+                            name="name"
+                            placeholder="Product name"
+                            value={product.name}
                             onChange={onChange}
                             required
                         />
@@ -162,15 +162,15 @@ export default function EditProduct() {
                             required
                         />
                     </div>
-                    <input
+                    {/* <input
                         className={styles.check}
                         type="checkbox"
                         id="negotiable"
                         name="negotiable"
                         value={product.negotiable}
                         onChange={onChange}
-                    />
-                    <label className={styles.check} htmlFor="negotiable"> Negotiable </label>
+                    /> */}
+                    {/* <label className={styles.check} htmlFor="negotiable"> Negotiable </label> */}
                 </div>
                 <div className={styles.row}>
                     <input type="submit" value="Edit Product" />

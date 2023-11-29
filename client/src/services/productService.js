@@ -25,8 +25,8 @@ export const getMyProduct = async (ownerId) => {
     return result;
 }
 
-export const getOne = async (productId) => {
-    const response = await fetch(`${baseUrl}/${productId}`, {
+export const getOne = async (_id) => {
+    const response = await fetch(`${baseUrl}/${_id}`, {
         method: 'GET',
         headers: {
             'content-type': 'application/json',
