@@ -10,7 +10,7 @@ const formInitialState = {
     password: "",
 };
 
-const LoginFormKyes = {
+const LoginFormKeys = {
     Email: 'email',
     Password: 'password',
 };
@@ -18,8 +18,8 @@ export default function LoginForm({
 }) {
     const { loginSubmitHandler } = useContext(AuthContext);
     const { values, onChange, onSubmit, resetFormHandler } = useForm(loginSubmitHandler, {
-        [LoginFormKyes.Email]: '',
-        [LoginFormKyes.Password]: '',
+        [LoginFormKeys.Email]: '',
+        [LoginFormKeys.Password]: '',
     })
     const emailInputRef = useRef();
     const [formValues, setFormValues] = useState(formInitialState);
@@ -68,8 +68,8 @@ export default function LoginForm({
                         ref={emailInputRef}
                         type="email"
                         id="email"
-                        name={LoginFormKyes.Email}
-                        value={values[LoginFormKyes.Email]}
+                        name={LoginFormKeys.Email}
+                        value={values[LoginFormKeys.Email]}
                         placeholder='example@abc.de'
                         onChange={onChange}
                         onBlur={simpleValidator}
@@ -81,8 +81,8 @@ export default function LoginForm({
                     <input
                         type="password"
                         id="password"
-                        name={LoginFormKyes.Password}
-                        value={values[LoginFormKyes.Password]}
+                        name={LoginFormKeys.Password}
+                        value={values[LoginFormKeys.Password]}
                         onChange={onChange}
                         onBlur={simpleValidator}
                         className={errors.email && styles.inputError}

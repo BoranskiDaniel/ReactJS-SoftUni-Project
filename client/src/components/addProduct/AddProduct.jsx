@@ -1,17 +1,18 @@
 import styles from "./AddProduct.module.css";
-import * as productService from "../../services/productService";
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
+import useForm from "../../hooks/useForm";
+import AuthContext from "../../contex/AuthContext";
 
-const addFormKyes = {
-    name: '',
-    type: '',
-    sort: '',
-    imageUrl: '',
-    company: '',
-    email: '',
-    price: '',
-    negotiable: '',
+const addFormKeys = {
+    name: 'name',
+    type: 'type',
+    sort: 'sort',
+    imageUrl: 'imageUrl',
+    company: 'company',
+    email: 'email',
+    price: 'price',
+    negotiable: 'negotiable',
 };
 
 
@@ -19,38 +20,32 @@ export default function AddProduct() {
     const navigate = useNavigate();
     const usernameInputRef = useRef();
     const [checked, setChecked] = useState(false);
-    const [product, setProduct] = useState(addFormKyes)
+    // const [product, setProduct] = useState(addFormKeys)
 
     useEffect(() => {
         usernameInputRef.current.focus();
     }, []);
 
-    const productCreateHandler = async (e) => {
-        e.preventDefault()
-        // const productData = Object.fromEntries(new FormData(e.currentTarget));
-
-        try {
-            const result = await productService.create({ ... addFormKyes })
-            setProduct(result)
-            navigate('/products')
-        } catch (error) {
-            throw new Error(`${error}`)
-        }
-    }
+    const { productCreateHandler } = useContext(AuthContext);
 
     const onCheckChange = () => {
         setChecked(!checked);
     };
 
-    const onChange = (e) => {
-        setProduct(state => ({
-            ...state,
-            [e.target.name]: e.target.value
-        }));
-    }
+    const { values, onChange, onSubmit } = useForm(productCreateHandler, {
+        [addFormKeys.name]: "",
+        [addFormKeys.type]: "",
+        [addFormKeys.sort]: "",
+        [addFormKeys.imageUrl]: "",
+        [addFormKeys.company]: "",
+        [addFormKeys.email]: "",
+        [addFormKeys.price]: "",
+        [addFormKeys.negotiable]: "",
+    });
+
     return (
         <div className={styles.container}>
-            <form>
+            <form onSubmit={onSubmit}>
                 <div className={styles.row}>
                     <div className={styles.col25}>
                         <label htmlFor="product">Product:</label>
@@ -62,7 +57,7 @@ export default function AddProduct() {
                             type="text"
                             id="name"
                             name="name"
-                            value={product.name}
+                            value={values[addFormKeys.name]}
                             onChange={onChange}
                             placeholder="Product name"
                             required
@@ -91,7 +86,7 @@ export default function AddProduct() {
                             type="text"
                             id="sort"
                             name="sort"
-                            value={product.sort}
+                            value={values[addFormKeys.sort]}
                             onChange={onChange}
                             placeholder="Product sort"
                             required
@@ -108,7 +103,7 @@ export default function AddProduct() {
                             type="text"
                             id="imageUrl"
                             name="imageUrl"
-                            value={product.imageUrl}
+                            value={values[addFormKeys.imageUrl]}
                             onChange={onChange}
                             placeholder="imageUrl"
                             required
@@ -125,7 +120,7 @@ export default function AddProduct() {
                             type="text"
                             id="company"
                             name="company"
-                            value={product.company}
+                            value={values[addFormKeys.company]}
                             onChange={onChange}
                             placeholder="Company name"
                             required
@@ -142,7 +137,7 @@ export default function AddProduct() {
                             type="text"
                             id="email"
                             name="email"
-                            value={product.email}
+                            value={values[addFormKeys.email]}
                             onChange={onChange}
                             placeholder="Email for orders"
                             required
@@ -159,7 +154,7 @@ export default function AddProduct() {
                             id="price"
                             name="price"
                             placeholder="Price"
-                            value={product.price}
+                            value={values[addFormKeys.price]}
                             onChange={onChange}
                             disabled={checked}
                             required
@@ -170,7 +165,7 @@ export default function AddProduct() {
                         type="checkbox"
                         id="negotiable"
                         name="negotiable"
-                        value={product.negotiable}
+                        value={values[addFormKeys.negotiable]}
                         onChange={onCheckChange}
                     />
                     <label className={styles.check} htmlFor="negotiable"> Negotiable </label>
@@ -183,4 +178,4 @@ export default function AddProduct() {
             </form>
         </div>
     );
-};
+}

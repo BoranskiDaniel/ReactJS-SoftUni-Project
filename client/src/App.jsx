@@ -2,6 +2,7 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useState } from "react";
 
 import * as authService from "./services/authService";
+import * as productService from "./services/productService";
 import AuthContext from './contex/AuthContext';
 
 import About from "./components/about/About";
@@ -51,10 +52,23 @@ function App() {
         localStorage.removeItem('accessToken')
     }
 
+    const productCreateHandler = async (values) => {
+        // e.preventDefault()
+        // const productData = Object.fromEntries(new FormData(e.currentTarget));
+        try {
+            const result = await productService.create({ ... values })
+            setAuth(result)
+            navigate('/products')
+        } catch (error) {
+            throw new Error(`${error}`)
+        }
+    }
+
     const values = {
         loginSubmitHandler,
         registerSubmitHandler,
         logoutHandler,
+        productCreateHandler,
         email: auth.email,
         _ownerId: auth._id,
         isAuthenticated: !!auth.accessToken,
