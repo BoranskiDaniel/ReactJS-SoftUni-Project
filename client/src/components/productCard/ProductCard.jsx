@@ -1,12 +1,14 @@
 import Order from "../order/Order";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import styles from "./ProductCard.module.css";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { ProductContext } from "../../contex/ProductContext";
+import AuthContext from "../../contex/AuthContext";
+import * as productService from "../../services/productService"
 
 export default function ProductCard({
-    _id,
+    // _id,
     name,
     type,
     sort,
@@ -15,8 +17,16 @@ export default function ProductCard({
     price,
     negotiable,
 }) {
-    const baseUrl = 'http://localhost:3030/users';
+    const {email, _ownerId} = useContext(AuthContext);
+    const [product, setProduct] = useState({});
+    const {_id} = useParams;
     const [order, setOrder] = useState(false);
+    const { onDeleteHandler } = useContext(ProductContext);
+
+    useEffect(() => {
+        productService.getOne(_id)
+        .then(setProduct)
+    }, [_id])
 
     const orderHandler = () => {
         if (order === false) {
@@ -30,7 +40,6 @@ export default function ProductCard({
         setOrder(false)
     }
 
-    const { onDeleteHandler } = useContext(ProductContext)
     return (
         <>
             <div className={styles.articles} >
@@ -57,12 +66,15 @@ export default function ProductCard({
                 </article>
 
                 <div>
-                    <button>
-                        <Link to={(`/products/${_id}/edit`)} > Edit</Link>
-                    </button>
-                    <button onClick={() => onDeleteHandler(_id)}> Detelete</button>
+                    {_ownerId === product._ownerId && (
+                        <>
+                            <button>
+                                <Link to={(`/products/${_id}/edit`)} > Edit</Link>
+                            </button>
+                            <button onClick={() => onDeleteHandler(_id)}> Detelete</button>
+                        </>
+                    )}
                 </div>
-
             </div>
 
             {order && <Order name={name} company={company} closeHandler={closeHandler} />}

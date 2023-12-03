@@ -3,33 +3,35 @@ import * as productService from "../../services/productService";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 
+const addFormKyes = {
+    name: '',
+    type: '',
+    sort: '',
+    imageUrl: '',
+    company: '',
+    email: '',
+    price: '',
+    negotiable: '',
+};
+
 
 export default function AddProduct() {
     const navigate = useNavigate();
     const usernameInputRef = useRef();
     const [checked, setChecked] = useState(false);
-    const [product, setProduct] = useState({
-        name: '',
-        type: '',
-        sort: '',
-        imageUrl: '',
-        company: '',
-        email: '',
-        price: '',
-        negotiable: '',
-    })
+    const [product, setProduct] = useState(addFormKyes)
 
     useEffect(() => {
         usernameInputRef.current.focus();
     }, []);
 
     const productCreateHandler = async (e) => {
-        e.preventDefault();
-
-        const productData = Object.fromEntries(new FormData(e.currentTarget));
+        e.preventDefault()
+        // const productData = Object.fromEntries(new FormData(e.currentTarget));
 
         try {
-            await productService.create(productData);
+            const result = await productService.create({ ... addFormKyes })
+            setProduct(result)
             navigate('/products')
         } catch (error) {
             throw new Error(`${error}`)
@@ -48,7 +50,7 @@ export default function AddProduct() {
     }
     return (
         <div className={styles.container}>
-            <form onSubmit={productCreateHandler}>
+            <form>
                 <div className={styles.row}>
                     <div className={styles.col25}>
                         <label htmlFor="product">Product:</label>
@@ -174,7 +176,9 @@ export default function AddProduct() {
                     <label className={styles.check} htmlFor="negotiable"> Negotiable </label>
                 </div>
                 <div className={styles.row}>
-                    <input type="submit" value="Add Product" />
+                    <button onClick={productCreateHandler}> Add product </button>
+
+                    {/* <input type="submit" value="Add Product" /> */}
                 </div>
             </form>
         </div>

@@ -12,21 +12,21 @@ export const getAll = async () => {
     return data;
 };
 
-export const getMyProduct = async (ownerId) => {
-    const response = await fetch(`${baseUrl}/${ownerId}`, {
-        method: 'GET',
-        headers: {
-            'content-type': 'application/json',
-            'X-Authorization': token
-        },
-    });
-    const result = await response.json();
+// export const getMyProduct = async (_ownerId) => {
+//     const response = await fetch(`${baseUrl}/${_ownerId}`, {
+//         method: 'GET',
+//         headers: {
+//             'content-type': 'application/json',
+//             'X-Authorization': token
+//         },
+//     });
+//     const result = await response.json();
 
-    return result;
-}
+//     return result;
+// }
 
-export const getOne = async (_id) => {
-    const response = await fetch(`${baseUrl}/${_id}`, {
+export const getOne = async () => {
+    const response = await fetch(baseUrl, {
         method: 'GET',
         headers: {
             'content-type': 'application/json',
@@ -40,7 +40,7 @@ export const getOne = async (_id) => {
 }
 
 export const create = async (productData) => {
-    const response = await fetch(baseUrl, {
+    const response = await fetch(`${baseUrl}`, {
         method: 'POST',
         headers: {
             'content-type': 'application/json',
