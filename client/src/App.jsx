@@ -52,12 +52,10 @@ function App() {
         localStorage.removeItem('accessToken')
     }
 
-    const productCreateHandler = async (values) => {
-        // e.preventDefault()
-        // const productData = Object.fromEntries(new FormData(e.currentTarget));
+    const productCreateHandler = async (productData) => {
         try {
-            const result = await productService.create({ ... values })
-            setAuth(result)
+            const result = await productService.create({ ...productData })
+            // setAuth(result)
             navigate('/products')
         } catch (error) {
             throw new Error(`${error}`)
@@ -70,7 +68,7 @@ function App() {
         logoutHandler,
         productCreateHandler,
         email: auth.email,
-        _ownerId: auth._id,
+        userId: auth._id,
         isAuthenticated: !!auth.accessToken,
     }
     return (

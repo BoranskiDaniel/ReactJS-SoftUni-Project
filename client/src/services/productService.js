@@ -25,7 +25,7 @@ export const getAll = async () => {
 //     return result;
 // }
 
-export const getOne = async () => {
+export const getOne = async (_id) => {
     const response = await fetch(baseUrl, {
         method: 'GET',
         headers: {

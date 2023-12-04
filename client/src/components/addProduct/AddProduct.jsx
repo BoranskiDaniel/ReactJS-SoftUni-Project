@@ -17,16 +17,14 @@ const addFormKeys = {
 
 
 export default function AddProduct() {
-    const navigate = useNavigate();
     const usernameInputRef = useRef();
     const [checked, setChecked] = useState(false);
-    // const [product, setProduct] = useState(addFormKeys)
+    const { productCreateHandler } = useContext(AuthContext);
 
     useEffect(() => {
         usernameInputRef.current.focus();
     }, []);
 
-    const { productCreateHandler } = useContext(AuthContext);
 
     const onCheckChange = () => {
         setChecked(!checked);
@@ -171,9 +169,9 @@ export default function AddProduct() {
                     <label className={styles.check} htmlFor="negotiable"> Negotiable </label>
                 </div>
                 <div className={styles.row}>
-                    <button onClick={productCreateHandler}> Add product </button>
+                    {/* <button onClick={productCreateHandler}> Add product </button> */}
 
-                    {/* <input type="submit" value="Add Product" /> */}
+                    <input type="submit" onClick={productCreateHandler} value="Add Product" />
                 </div>
             </form>
         </div>
