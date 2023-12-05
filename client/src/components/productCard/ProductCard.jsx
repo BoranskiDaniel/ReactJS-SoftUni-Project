@@ -8,6 +8,7 @@ import AuthContext from "../../contex/AuthContext";
 import * as productService from "../../services/productService"
 
 export default function ProductCard({
+    _id,
     name,
     type,
     sort,
@@ -18,7 +19,7 @@ export default function ProductCard({
 }) {
     const { email, userId } = useContext(AuthContext);
     const [product, setProduct] = useState({});
-    const { _id } = useParams();
+    // const { _id } = useParams();
     const [order, setOrder] = useState(false);
     const { onDeleteHandler } = useContext(ProductContext);
 
@@ -37,8 +38,9 @@ export default function ProductCard({
     }
 
     // console.log(userId);
-    // console.log({ product });
-   
+    // console.log({ ...product });
+    // console.log({  });
+
     const closeHandler = () => {
         setOrder(false)
     };
@@ -70,14 +72,14 @@ export default function ProductCard({
                 </article>
 
                 <div>
-                    {userId === product._ownerId && (
+                    {/* {userId === product._ownerId && ( */}
                         <div>
                             <button>
                                 <Link to={(`/products/${_id}/edit`, { _id })} > Edit</Link>
                             </button>
                             <button onClick={() => onDeleteHandler(_id)}> Delete</button>
                         </div>
-                    )}
+                    {/* )} */}
                 </div>
             </div>
 

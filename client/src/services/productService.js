@@ -65,8 +65,8 @@ export const edit = async (_id, productData) => {
     return result;
 }
 
-export const del = async (_id) => {
-    const response = await fetch(`${baseUrl}/${_id}`, {
+export const del = async (productId) => {
+    const response = await fetch(`${baseUrl}/${productId}`, {
         method: 'DELETE',
         headers: {
             'X-Authorization': token

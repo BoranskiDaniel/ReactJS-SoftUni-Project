@@ -11,31 +11,30 @@ export default function Products() {
 
     const [showProduct, setShowPorduct] = useState([]);
     const navigate = useNavigate();
-    const { _id } = useParams();
     useEffect(() => {
         productService.getAll()
-            .then(result => setShowPorduct(result))
-            .catch(err => console.log(err))
+        .then(result => setShowPorduct(result))
+        .catch(err => console.log(err))
     }, []);
-
-    const onDeleteHandler = async (_id) => {
-        const hasConfirmed = confirm(`Are you sure you want to delete ${showProduct.name}?`);
-
-        if (hasConfirmed) {
-            await productService.del(_id);
-
+    
+    const onDeleteHandler = async (productId) => {
+        // const hasConfirmed = confirm(`Are you sure you want to delete ${showProduct.name}?`);
+        
+        // if (hasConfirmed) {
+            await productService.del(productId);
+            
             navigate('/products');
-        }else {
-            throw new Error(`${"Something went wrong"}`)
-        };
-
-        setShowPorduct(state => state.filter(x => x._id !== _id));
-    };
-
-    const contextValue = { onDeleteHandler }
-
-    return (
-        <ProductContext.Provider value={contextValue}>
+            // }else {
+                //     throw new Error(`${"Something went wrong"}`)
+                // };
+                
+                setShowPorduct(state => state.filter(x => x._id !== productId));
+            };
+            
+            const contextValue = { onDeleteHandler }
+            
+            return (
+                <ProductContext.Provider value={contextValue}>
             <div id="product" className="product">
                 <Offer />
                 <div className="container">
