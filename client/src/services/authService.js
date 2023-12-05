@@ -45,8 +45,8 @@ export const register = async (email, password, _id) => {
     return result;
 }
 
-export const logout = () => {
-    const response = fetch(`${baseUrl}/logout`, {
+export const logout = async () => {
+    const response = await fetch(`${baseUrl}/logout`, {
         method: 'GET',
         headers: {
             'X-Authorization': token
@@ -56,7 +56,7 @@ export const logout = () => {
         return {};
     }
 
-    const result = response.json();
+    const result = await response.json();
 
     if (!response.ok) {
         throw result;
