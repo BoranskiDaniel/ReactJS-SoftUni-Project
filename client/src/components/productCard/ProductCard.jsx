@@ -8,7 +8,6 @@ import AuthContext from "../../contex/AuthContext";
 import * as productService from "../../services/productService"
 
 export default function ProductCard({
-    _id,
     name,
     type,
     sort,
@@ -17,17 +16,17 @@ export default function ProductCard({
     price,
     negotiable,
 }) {
-    // const { email, userId } = useContext(AuthContext);
+    const { email, userId } = useContext(AuthContext);
     const [product, setProduct] = useState({});
-    // const { _id } = useParams;
+    const { _id } = useParams();
     const [order, setOrder] = useState(false);
-    // const { onDeleteHandler } = useContext(ProductContext);
+    const { onDeleteHandler } = useContext(ProductContext);
 
     useEffect(() => {
-        productService.getAll()
+        productService.getOne(_id)
             .then(setProduct)
             .catch(err => console.log(err));
-    }, [])
+    }, [_id]);
 
     const orderHandler = () => {
         if (order === false) {
@@ -37,13 +36,9 @@ export default function ProductCard({
         };
     }
 
-    // const {
-    //     isAuthenticated,
-    // } = useContext(AuthContext);
-    // // console.log(userId);
-    // // console.log(product._ownerId);
-    // // console.log({ product });
-
+    // console.log(userId);
+    // console.log({ product });
+   
     const closeHandler = () => {
         setOrder(false)
     };
@@ -74,16 +69,16 @@ export default function ProductCard({
                     </div>
                 </article>
 
-                {/* <div>
-                    {isAuthenticated && (
-                        <>
+                <div>
+                    {userId === product._ownerId && (
+                        <div>
                             <button>
-                                <Link to={(`/products/${_id}/edit`)} > Edit</Link>
+                                <Link to={(`/products/${_id}/edit`, { _id })} > Edit</Link>
                             </button>
-                            <button onClick={() => onDeleteHandler(_id)}> Detelete</button>
-                        </>
+                            <button onClick={() => onDeleteHandler(_id)}> Delete</button>
+                        </div>
                     )}
-                </div> */}
+                </div>
             </div>
 
             {order && <Order name={name} company={company} closeHandler={closeHandler} />}

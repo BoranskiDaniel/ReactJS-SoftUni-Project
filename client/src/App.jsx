@@ -63,7 +63,8 @@ function App() {
     }
 
     const orderSubmitHandler = () => {
-        console.log('here');
+        console.log("Your order has been send!")
+        navigate('/products')
     }
 
     const values = {

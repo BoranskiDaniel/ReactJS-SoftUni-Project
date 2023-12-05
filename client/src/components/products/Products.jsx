@@ -3,7 +3,7 @@ import * as productService from "../../services/productService";
 import { ProductContext } from "../../contex/ProductContext";
 
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import ProductCard from "../productCard/ProductCard";
 
@@ -11,23 +11,25 @@ export default function Products() {
 
     const [showProduct, setShowPorduct] = useState([]);
     const navigate = useNavigate();
-
+    const { _id } = useParams();
     useEffect(() => {
         productService.getAll()
             .then(result => setShowPorduct(result))
             .catch(err => console.log(err))
     }, []);
 
-    const onDeleteHandler = async (productId) => {
+    const onDeleteHandler = async (_id) => {
+        const hasConfirmed = confirm(`Are you sure you want to delete ${showProduct.name}?`);
 
-        try {
-            await productService.del(productId);
-            navigate('/products')
-        } catch (error) {
-            throw new Error(`${error}`)
+        if (hasConfirmed) {
+            await productService.del(_id);
+
+            navigate('/products');
+        }else {
+            throw new Error(`${"Something went wrong"}`)
         };
 
-        setShowPorduct(state => state.filter(x => x._id !== productId));
+        setShowPorduct(state => state.filter(x => x._id !== _id));
     };
 
     const contextValue = { onDeleteHandler }

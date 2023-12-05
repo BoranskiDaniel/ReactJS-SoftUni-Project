@@ -53,7 +53,7 @@ export default function Order({ name, company, closeHandler }) {
                     />
                 </div>
                 <div>
-                    <button type="submit" onClick={orderSubmitHandler}>Order</button>
+                    <button type="submit" onClick={orderSubmitHandler && closeHandler}>Order</button>
                     <button type="button" onClick={closeHandler}>Close</button>
                 </div>
             </form>
