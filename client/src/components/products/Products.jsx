@@ -51,6 +51,7 @@ export default function Products() {
                     {showProduct.map((product) => (
                         <ProductCard
                             key={product._id}
+                            _id={product._id}
                             _ownerId={product._ownerId}
                             name={product.name}
                             type={product.type}

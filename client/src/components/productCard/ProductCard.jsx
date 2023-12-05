@@ -8,7 +8,7 @@ import AuthContext from "../../contex/AuthContext";
 import * as productService from "../../services/productService"
 
 export default function ProductCard({
-    // _ownerId,    
+    _id,
     name,
     type,
     sort,
@@ -17,15 +17,16 @@ export default function ProductCard({
     price,
     negotiable,
 }) {
-    const { email, userId } = useContext(AuthContext);
+    // const { email, userId } = useContext(AuthContext);
     const [product, setProduct] = useState({});
-    const { _id } = useParams;
+    // const { _id } = useParams;
     const [order, setOrder] = useState(false);
-    const { onDeleteHandler } = useContext(ProductContext);
+    // const { onDeleteHandler } = useContext(ProductContext);
 
     useEffect(() => {
         productService.getAll()
             .then(setProduct)
+            .catch(err => console.log(err));
     }, [])
 
     const orderHandler = () => {
@@ -36,13 +37,17 @@ export default function ProductCard({
         };
     }
 
-    console.log(userId);
-    console.log(product._ownerId);
-    console.log({ product });
+    // const {
+    //     isAuthenticated,
+    // } = useContext(AuthContext);
+    // // console.log(userId);
+    // // console.log(product._ownerId);
+    // // console.log({ product });
 
     const closeHandler = () => {
         setOrder(false)
-    }
+    };
+
 
     return (
         <>
@@ -69,8 +74,8 @@ export default function ProductCard({
                     </div>
                 </article>
 
-                <div>
-                    {userId === product._ownerId && (
+                {/* <div>
+                    {isAuthenticated && (
                         <>
                             <button>
                                 <Link to={(`/products/${_id}/edit`)} > Edit</Link>
@@ -78,10 +83,10 @@ export default function ProductCard({
                             <button onClick={() => onDeleteHandler(_id)}> Detelete</button>
                         </>
                     )}
-                </div>
+                </div> */}
             </div>
 
             {order && <Order name={name} company={company} closeHandler={closeHandler} />}
         </>
     );
-};
+}

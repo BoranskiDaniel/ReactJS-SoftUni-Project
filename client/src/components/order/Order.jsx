@@ -1,9 +1,16 @@
 import styles from "./Order.module.css"
 
 import useForm from "../../hooks/useForm";
+import { useContext } from "react";
+import AuthContext from "../../contex/AuthContext";
 
 export default function Order({ name, company, closeHandler }) {
-    const { formValues, onChangeHandler, onSubmit } = useForm({ quantity: '', email: '', delivery: '' })
+    const { orderSubmitHandler } = useContext(AuthContext);
+    const { values, onChange, onSubmit } = useForm(orderSubmitHandler, {
+        quantity: '',
+        email: '',
+        delivery: ''
+    })
     return (
         <div className={styles.backdrop} >
             <form className={styles.mainOrder} onSubmit={onSubmit}>
@@ -16,8 +23,8 @@ export default function Order({ name, company, closeHandler }) {
                         type="number"
                         id="quantity"
                         name="quantity"
-                        value={formValues.quantity}
-                        onChange={onChangeHandler}
+                        value={values.quantity}
+                        onChange={onChange}
                         required
                     />
                 </div>
@@ -28,8 +35,8 @@ export default function Order({ name, company, closeHandler }) {
                         type="text"
                         id="email"
                         name="email"
-                        value={formValues.email}
-                        onChange={onChangeHandler}
+                        value={values.email}
+                        onChange={onChange}
                         required
                     />
                 </div>
@@ -40,13 +47,13 @@ export default function Order({ name, company, closeHandler }) {
                         type="text"
                         id="delivery"
                         name="delivery"
-                        value={formValues.delivery}
-                        onChange={onChangeHandler}
+                        value={values.delivery}
+                        onChange={onChange}
                         required
                     />
                 </div>
                 <div>
-                    <button type="submit">Order</button>
+                    <button type="submit" onClick={orderSubmitHandler}>Order</button>
                     <button type="button" onClick={closeHandler}>Close</button>
                 </div>
             </form>

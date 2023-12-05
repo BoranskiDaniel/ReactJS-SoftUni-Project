@@ -62,11 +62,16 @@ function App() {
         }
     }
 
+    const orderSubmitHandler = () => {
+        console.log('here');
+    }
+
     const values = {
         loginSubmitHandler,
         registerSubmitHandler,
         logoutHandler,
         productCreateHandler,
+        orderSubmitHandler,
         email: auth.email,
         userId: auth._id,
         isAuthenticated: !!auth.accessToken,
@@ -74,11 +79,9 @@ function App() {
     return (
         <AuthContext.Provider value={values}>
             <div className="main-layout">
-                {/* <Loader /> */}
                 <Header />
 
                 <Routes>
-
                     <Route path='/' element={<SliderSection />} />
                     <Route path='/about' element={<About />} />
                     <Route path='/products' element={<Products />} />
@@ -89,9 +92,6 @@ function App() {
                     <Route path='/logout' element={<Logout />} />
                     <Route path='/products/:_id/edit' element={<EditProduct />} />
                     <Route path='/*' element={<NotFound />} />
-
-
-                    {/* add Map ! */}
                 </Routes>
 
                 <Footer />

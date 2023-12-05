@@ -2,9 +2,7 @@ const baseUrl = "http://localhost:3030/data/products";
 const token = localStorage.getItem('accessToken');
 
 export const getAll = async () => {
-    const response = await fetch(baseUrl, {
-        method: 'GET'
-    });
+    const response = await fetch(baseUrl);
     const result = await response.json();
 
     const data = Object.values(result);
@@ -68,10 +66,12 @@ export const edit = async (_id, productData) => {
 }
 
 export const del = async (_id) => {
-    await fetch(`${baseUrl}/${_id}`, {
+    const response = await fetch(`${baseUrl}/${_id}`, {
         method: 'DELETE',
         headers: {
             'X-Authorization': token
         },
     });
+    const result = await response.json();
+    return result;
 }
