@@ -17,7 +17,7 @@ export default function ProductCard({
     price,
     negotiable,
 }) {
-    const { email, userId } = useContext(AuthContext);
+    const { email, userId, isAuthenticated } = useContext(AuthContext);
     const [product, setProduct] = useState({});
     // const { _id } = useParams();
     const [order, setOrder] = useState(false);
@@ -72,14 +72,14 @@ export default function ProductCard({
                 </article>
 
                 <div>
-                    {/* {userId === product._ownerId && ( */}
+                    {isAuthenticated && (
                         <div>
-                            <button>
-                                <Link to={(`/products/${_id}/edit`, { _id })} > Edit</Link>
+                            <button type="submit">
+                                <Link to={(`/products/${_id}/edit`)} > Edit</Link>
                             </button>
                             <button onClick={() => onDeleteHandler(_id)}> Delete</button>
                         </div>
-                    {/* )} */}
+                    )}
                 </div>
             </div>
 

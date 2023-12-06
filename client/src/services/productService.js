@@ -23,8 +23,8 @@ export const getAll = async () => {
 //     return result;
 // }
 
-export const getOne = async (_id) => {
-    const response = await fetch(baseUrl, {
+export const getOne = async (productId) => {
+    const response = await fetch(`${baseUrl}/${productId}`, {
         method: 'GET',
         headers: {
             'content-type': 'application/json',
@@ -38,7 +38,7 @@ export const getOne = async (_id) => {
 }
 
 export const create = async (productData) => {
-    const response = await fetch(`${baseUrl}`, {
+    const response = await fetch(baseUrl, {
         method: 'POST',
         headers: {
             'content-type': 'application/json',
