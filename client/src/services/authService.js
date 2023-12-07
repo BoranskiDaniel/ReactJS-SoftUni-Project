@@ -1,68 +1,23 @@
+import * as request from "../lib/request"
+
 const baseUrl = 'http://localhost:3030/users';
 const token = localStorage.getItem('accessToken');
 
 export const login = async (email, password) => {
-    const response = await fetch(`${baseUrl}/login`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
+    const result = await request.post(`${baseUrl}/login`, {
+        email,
+        password,
     });
 
-    if (response.status === 204) {
-        return {};
-    };
-
-    const result = await response.json();
-
-    if (!response.ok) {
-        throw result;
-    }
-
     return result;
-}
+};
 
-export const register = async (email, password, _id) => {
-    const response = await fetch(`${baseUrl}/register`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password, _id }),
-    });
+export const register = (email, password) => request.post(`${baseUrl}/register`, {
+    email,
+    password,
+});
 
-    if (response.status === 204) {
-        return {};
-    };
+export const logout = () => request.get(`${baseUrl}/logout`);
 
-    const result = await response.json();
-
-    if (!response.ok) {
-        throw result;
-    }
-
-    return result;
-}
-
-export const logout = async () => {
-    const response = await fetch(`${baseUrl}/logout`, {
-        method: 'GET',
-        headers: {
-            'X-Authorization': token
-        },
-    });
-    if (response.status === 204) {
-        return {};
-    }
-
-    const result = await response.json();
-
-    if (!response.ok) {
-        throw result;
-    }
-
-    return result;
-}
 
 
