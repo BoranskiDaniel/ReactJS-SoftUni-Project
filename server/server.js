@@ -1340,41 +1340,41 @@
         }
     };
     var seedData = {
-        products: {
-            "f5867e9b-23c4-48b5-9933-18a98bf4cbc7": {
-                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
-                name: "Apples",
-                type: "fruit",
-                sort: "Granny Smith Apples",
-                imageUrl: "https://www.seriouseats.com/thmb/yiFX3VDd2yiHFKzY-Nu6X9JGi5o=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/__opt__aboutcom__coeus__resources__content_migration__serious_eats__sweets.seriouseats.com__images__2015__04__20150428-best-apples-for-pie-reupload-kenji-1-4d0a4c15136e4819814b2d205d2dc08f.jpg",
-                company: "Applandia",
-                email: "applandia@abc.com",
-                price: "2.00",
-                _id: "f5867e9b-23c4-48b5-9933-18a98bf4cbc7",
-            },
-            "7263eda8-64ff-46bc-9280-73d9317370cc": {
-                _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
-                name: "Carrots",
-                type: "vegetable",
-                sort: "Nantes Carrots",
-                imageUrl: "https://blog-images-1.pharmeasy.in/blog/production/wp-content/uploads/2021/04/23175719/shutterstock_440493100-1.jpg",
-                company: "Bunnyfood LTD",
-                email: "bunnyfood@vdc.com",
-                price: "1.80",
-                _id: "7263eda8-64ff-46bc-9280-73d9317370cc",
-            },
-            "bf2dda28-4a67-4319-9edc-0b3685596e10": {
-                _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
-                name: "Wheat",
-                type: "agricultural",
-                sort: "Hard Red Winter Wheat",
-                imageUrl: "https://www.preventionweb.net/sites/default/files/styles/landscape_16_9/public/2023-06/Shutterstock_1925083001-min.jpg?h=2cf907fb&itok=orFAibF3",
-                company: "The Fabric",
-                email: "thefabric@fdc.com",
-                price: "negotiable",
-                _id: "bf2dda28-4a67-4319-9edc-0b3685596e10",
-            }
-        },
+        // products: {
+        //     "f5867e9b-23c4-48b5-9933-18a98bf4cbc7": {
+        //         _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+        //         name: "Apples",
+        //         type: "fruit",
+        //         sort: "Granny Smith Apples",
+        //         imageUrl: "https://www.seriouseats.com/thmb/yiFX3VDd2yiHFKzY-Nu6X9JGi5o=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/__opt__aboutcom__coeus__resources__content_migration__serious_eats__sweets.seriouseats.com__images__2015__04__20150428-best-apples-for-pie-reupload-kenji-1-4d0a4c15136e4819814b2d205d2dc08f.jpg",
+        //         company: "Applandia",
+        //         email: "applandia@abc.com",
+        //         price: "2.00",
+        //         _id: "f5867e9b-23c4-48b5-9933-18a98bf4cbc7",
+        //     },
+        //     "7263eda8-64ff-46bc-9280-73d9317370cc": {
+        //         _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
+        //         name: "Carrots",
+        //         type: "vegetable",
+        //         sort: "Nantes Carrots",
+        //         imageUrl: "https://blog-images-1.pharmeasy.in/blog/production/wp-content/uploads/2021/04/23175719/shutterstock_440493100-1.jpg",
+        //         company: "Bunnyfood LTD",
+        //         email: "bunnyfood@vdc.com",
+        //         price: "1.80",
+        //         _id: "7263eda8-64ff-46bc-9280-73d9317370cc",
+        //     },
+        //     "bf2dda28-4a67-4319-9edc-0b3685596e10": {
+        //         _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+        //         name: "Wheat",
+        //         type: "agricultural",
+        //         sort: "Hard Red Winter Wheat",
+        //         imageUrl: "https://www.preventionweb.net/sites/default/files/styles/landscape_16_9/public/2023-06/Shutterstock_1925083001-min.jpg?h=2cf907fb&itok=orFAibF3",
+        //         company: "The Fabric",
+        //         email: "thefabric@fdc.com",
+        //         price: "negotiable",
+        //         _id: "bf2dda28-4a67-4319-9edc-0b3685596e10",
+        //     }
+        // },
         recipes: {
             "3987279d-0ad4-4afb-8ca9-5b256ae3b298": {
                 _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",

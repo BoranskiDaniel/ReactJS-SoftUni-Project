@@ -2,20 +2,21 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import * as productService from "../../services/productService";
-import styles from "../editProduct/EditProduct.module.css"
+import styles from "../editProduct/EditProduct.module.css";
+import useForm from "../../hooks/useForm";
 
 export default function EditProduct() {
     const navigate = useNavigate();
     const { _id } = useParams();
     const [product, setProduct] = useState({
-        name: '',
+        product: '',
         type: '',
         sort: '',
         imageUrl: '',
         company: '',
         email: '',
         price: '',
-        negotiable: '',
+        // negotiable: '',
     })
 
     useEffect(() => {
@@ -25,10 +26,7 @@ export default function EditProduct() {
             });
     }, [_id]);
 
-    const editProductHandler = async (e) => {
-        e.preventDefault();
-
-        const values = Object.fromEntries(new FormData(e.currentTarget));
+    const editProductHandler = async (values) => {
 
         try {
             await productService.edit(_id, values);
@@ -39,30 +37,25 @@ export default function EditProduct() {
         }
     }
 
-    const onChange = (e) => {
-        setProduct(state => ({
-            ...state,
-            [e.target.name]: e.target.value
-        }));
-    };
+    const { values, onChange, onSubmit } = useForm(editProductHandler, product);
 
     return (
         <div className={styles.container}>
-            <form onSubmit={editProductHandler}>
+            <form onSubmit={onSubmit}>
                 <div className={styles.row}>
                     <div className={styles.col25}>
-                        <label htmlFor="name">Product:</label>
+                        <label htmlFor="product">Product:</label>
                     </div>
                     <div className={styles.col75}>
                         <input
                             className={styles.textField}
                             type="text"
-                            id="name"
-                            name="name"
-                            placeholder="Product name"
-                            value={product.name}
+                            id="product"
+                            name="product"
+                            placeholder="Product"
+                            value={values.product}
                             onChange={onChange}
-                            required
+                        // required
                         />
                     </div>
                 </div>
@@ -89,9 +82,9 @@ export default function EditProduct() {
                             id="sort"
                             name="sort"
                             placeholder="Product sort"
-                            value={product.sort}
+                            value={values.sort}
                             onChange={onChange}
-                            required
+                        // required
                         />
                     </div>
                 </div>
@@ -106,9 +99,9 @@ export default function EditProduct() {
                             id="imageUrl"
                             name="imageUrl"
                             placeholder="imageUrl"
-                            value={product.imageUrl}
+                            value={values.imageUrl}
                             onChange={onChange}
-                            required
+                        // required
                         />
                     </div>
                 </div>
@@ -123,9 +116,9 @@ export default function EditProduct() {
                             id="company"
                             name="company"
                             placeholder="Company name"
-                            value={product.company}
+                            value={values.company}
                             onChange={onChange}
-                            required
+                        // required
                         />
                     </div>
                 </div>
@@ -140,9 +133,9 @@ export default function EditProduct() {
                             id="email"
                             name="email"
                             placeholder="Email for orders"
-                            value={product.email}
+                            value={values.email}
                             onChange={onChange}
-                            required
+                        // required
                         />
                     </div>
                 </div>
@@ -156,21 +149,21 @@ export default function EditProduct() {
                             id="price"
                             name="price"
                             placeholder="Price"
-                            value={product.price}
+                            value={values.price}
                             onChange={onChange}
-                            // disabled={checked}
-                            required
+                        // disabled={checked}
+                        // required
                         />
                     </div>
-                    {/* <input
+                    <input
                         className={styles.check}
                         type="checkbox"
                         id="negotiable"
                         name="negotiable"
-                        value={product.negotiable}
+                        value={values.negotiable}
                         onChange={onChange}
-                    /> */}
-                    {/* <label className={styles.check} htmlFor="negotiable"> Negotiable </label> */}
+                    />
+                    <label className={styles.check} htmlFor="negotiable"> Negotiable </label>
                 </div>
                 <div className={styles.row}>
                     <input type="submit" value="Edit Product" />

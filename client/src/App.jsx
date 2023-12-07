@@ -16,7 +16,7 @@ import SliderSection from "./components/header/SliderSection";
 import AddProduct from "./components/addProduct/AddProduct";
 import Logout from './components/Logout';
 import NotFound from './components/notFound/notFound';
-import EditProduct from './components/editProduct/editProduct';
+import EditProduct from './components/editProduct/EditProduct';
 
 // import Loader from "./components/Loader" ;
 
