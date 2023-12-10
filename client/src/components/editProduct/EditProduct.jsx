@@ -7,7 +7,7 @@ import useForm from "../../hooks/useForm";
 
 export default function EditProduct() {
     const navigate = useNavigate();
-    const { _id } = useParams();
+    const { productId } = useParams();
     const [product, setProduct] = useState({
         product: '',
         type: '',
@@ -20,22 +20,22 @@ export default function EditProduct() {
     })
 
     useEffect(() => {
-        productService.getOne(_id)
+        productService.getOne(productId)
             .then(result => {
                 setProduct(result);
             });
-    }, [_id]);
+    }, [productId]);
+
 
     const editProductHandler = async (values) => {
-
         try {
-            await productService.edit(_id, values);
+            await productService.edit(productId, values);
 
             navigate('/products');
         } catch (err) {
             console.log(err);
         }
-    }
+    };
 
     const { values, onChange, onSubmit } = useForm(editProductHandler, product);
 
@@ -65,9 +65,9 @@ export default function EditProduct() {
                     </div>
                     <div className={styles.col75}>
                         <select className={styles.selectType} id="type" onChange={onChange} name="type">
-                            <option value="vegetable">Vegetable</option>
-                            <option value="fruit">Fruit</option>
-                            <option value="agricultural">Agricultural Product</option>
+                            <option value={values.type}>Vegetable</option>
+                            <option value={values.type}>Fruit</option>
+                            <option value={values.type}>Agricultural Product</option>
                         </select>
                     </div>
                 </div>
@@ -160,7 +160,7 @@ export default function EditProduct() {
                         type="checkbox"
                         id="negotiable"
                         name="negotiable"
-                        value={values.negotiable}
+                        value={product.negotiable}
                         onChange={onChange}
                     />
                     <label className={styles.check} htmlFor="negotiable"> Negotiable </label>

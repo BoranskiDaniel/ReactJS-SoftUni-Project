@@ -55,7 +55,8 @@ function App() {
     const productCreateHandler = async (productData) => {
         try {
             const result = await productService.create({ ...productData })
-            // setAuth(result)
+            setAuth(result);
+            // localStorage.setItem('accessToken', result.accessToken);
             navigate('/products')
         } catch (error) {
             throw new Error(`${error}`)

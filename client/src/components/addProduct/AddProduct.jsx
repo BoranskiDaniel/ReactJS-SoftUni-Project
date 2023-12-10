@@ -169,8 +169,6 @@ export default function AddProduct() {
                     <label className={styles.check} htmlFor="negotiable"> Negotiable </label>
                 </div>
                 <div className={styles.row}>
-                    {/* <button onClick={productCreateHandler}> Add product </button> */}
-
                     <input type="submit" onClick={productCreateHandler} value="Add Product" />
                 </div>
             </form>

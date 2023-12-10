@@ -9,18 +9,11 @@ export const getAll = async () => {
     return result;
 };
 
-// export const getMyProduct = async (_ownerId) => {
-//     const response = await fetch(`${baseUrl}/${_ownerId}`, {
-//         method: 'GET',
-//         headers: {
-//             'content-type': 'application/json',
-//             'X-Authorization': token
-//         },
-//     });
-//     const result = await response.json();
+export const getMyProduct = async (_ownerId) => { 
+    const result = await request.get(baseUrl, _ownerId);
 
-//     return result;
-// }
+    return result;
+}
 
 export const getOne = async (productId) => {
     const result = await request.get(`${baseUrl}/${productId}`,);
