@@ -49,7 +49,7 @@ function App() {
 
     const logoutHandler = () => {
         setAuth({});
-        localStorage.removeItem('accessToken')
+        localStorage.removeItem('accessToken');
     }
 
     const productCreateHandler = async (productData) => {
@@ -91,7 +91,7 @@ function App() {
                     <Route path='/login' element={<LoginForm />} />
                     <Route path='/register' element={<RegisterForm />} />
                     <Route path='/logout' element={<Logout />} />
-                    <Route path='/products/:_id/edit' element={<EditProduct />} />
+                    <Route path='/products/:productId/edit' element={<EditProduct />} />
                     <Route path='/*' element={<NotFound />} />
                 </Routes>
 

@@ -22,8 +22,8 @@ export const getAll = async () => {
 //     return result;
 // }
 
-export const getOne = async (_id) => {
-    const result = await request.get(`${baseUrl}/${_id}`,);
+export const getOne = async (productId) => {
+    const result = await request.get(`${baseUrl}/${productId}`,);
 
     return result;
 }

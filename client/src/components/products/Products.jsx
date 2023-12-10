@@ -2,7 +2,7 @@ import Offer from "../offer/Offer";
 import * as productService from "../../services/productService";
 import { ProductContext } from "../../contex/ProductContext";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";    
 import { useNavigate, useParams } from "react-router-dom";
 
 import ProductCard from "../productCard/ProductCard";
@@ -13,28 +13,28 @@ export default function Products() {
     const navigate = useNavigate();
     useEffect(() => {
         productService.getAll()
-        .then(result => setShowPorduct(result))
-        .catch(err => console.log(err))
+            .then(result => setShowPorduct(result))
+            .catch(err => console.log(err))
     }, []);
-    
+
     const onDeleteHandler = async (productId) => {
         // const hasConfirmed = confirm(`Are you sure you want to delete ${showProduct.name}?`);
-        
+
         // if (hasConfirmed) {
-            await productService.del(productId);
-            
-            navigate('/products');
-            // }else {
-                //     throw new Error(`${"Something went wrong"}`)
-                // };
-                
-                setShowPorduct(state => state.filter(x => x._id !== productId));
-            };
-            
-            const contextValue = { onDeleteHandler }
-            
-            return (
-                <ProductContext.Provider value={contextValue}>
+        await productService.del(productId);
+
+        navigate('/products');
+        // }else {
+        //     throw new Error(`${"Something went wrong"}`)
+        // };
+
+        setShowPorduct(state => state.filter(x => x._id !== productId));
+    };
+
+    const contextValue = { onDeleteHandler }
+
+    return (
+        <ProductContext.Provider value={contextValue}>
             <div id="product" className="product">
                 <Offer />
                 <div className="container">

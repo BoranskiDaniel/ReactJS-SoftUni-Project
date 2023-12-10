@@ -1,27 +1,24 @@
-import Order from "../order/Order";
 import { Link, useParams } from "react-router-dom";
+import { useState, useContext, useEffect } from "react";
 
 import styles from "./ProductCard.module.css";
-import { useState, useContext, useEffect } from "react";
+
+import Order from "../order/Order";
 import { ProductContext } from "../../contex/ProductContext";
 import AuthContext from "../../contex/AuthContext";
 import * as productService from "../../services/productService"
 
-export default function ProductCard({
-    _id,
-    name,
-    type,
-    sort,
-    imageUrl,
-    company,
-    price,
-    negotiable,
-}) {
-    const { email, userId, isAuthenticated } = useContext(AuthContext);
+
+export default function ProductCard(
+    {
+        _id,
+    }
+) {
+    const { email, userId } = useContext(AuthContext);
     const [product, setProduct] = useState({});
-    // const { _id } = useParams();
     const [order, setOrder] = useState(false);
     const { onDeleteHandler } = useContext(ProductContext);
+    console.log(_id);
 
     useEffect(() => {
         productService.getOne(_id)
@@ -36,15 +33,13 @@ export default function ProductCard({
             setOrder(false);
         };
     }
-
-    // console.log(userId);
-    // console.log({ ...product });
-    // console.log({  });
+    console.log({ product });
 
     const closeHandler = () => {
         setOrder(false)
     };
 
+    const isOwner = userId === product._ownerId;
 
     return (
         <>
@@ -52,14 +47,14 @@ export default function ProductCard({
                 <article onClick={orderHandler}>
                     <div className={styles.articleWrapper}>
                         <figure className={styles.cardFigure}>
-                            <img src={imageUrl} alt={`${name}`} />
+                            <img src={product.imageUrl} alt={`${product.name}`} />
                         </figure>
                         <div className={styles.articleBody}>
-                            <h2>{name}</h2>
-                            <p>Type: {type}</p>
-                            <p>Sort: {sort}</p>
-                            <p>Company: {company}</p>
-                            <p className={styles.price}>Price ($ per kg. ): {price || negotiable}</p>
+                            <h2>{product.name}</h2>
+                            <p>Type: {product.type}</p>
+                            <p>Sort: {product.sort}</p>
+                            <p>Company: {product.company}</p>
+                            <p className={styles.price}>Price ($ per kg. ): {product.price || product.negotiable}</p>
                             <a className={styles.readMore}>
                                 <svg xmlns="http://www.w3.org/2000/svg" className={styles.icon} viewBox="0 0 20 20" fill="currentColor">
                                     <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
@@ -72,7 +67,7 @@ export default function ProductCard({
                 </article>
 
                 <div>
-                    {isAuthenticated && (
+                    {isOwner && (
                         <div>
                             <button type="submit">
                                 <Link to={(`/products/${_id}/edit`)} > Edit</Link>
@@ -83,7 +78,7 @@ export default function ProductCard({
                 </div>
             </div>
 
-            {order && <Order name={name} company={company} closeHandler={closeHandler} />}
+            {order && <Order name={product.name} company={product.company} closeHandler={closeHandler} />}
         </>
     );
 }
