@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useContext } from 'react';
+import { useState, useRef, useEffect, useContext, useMemo } from 'react';
 import { Link } from "react-router-dom";
 import AuthContext from "../../contex/AuthContext"
 
@@ -17,10 +17,11 @@ const LoginFormKeys = {
 export default function LoginForm({
 }) {
     const { loginSubmitHandler } = useContext(AuthContext);
-    const { values, onChange, onSubmit, resetFormHandler } = useForm(loginSubmitHandler, {
+    const initialValues = useMemo(() => ({
         [LoginFormKeys.Email]: '',
         [LoginFormKeys.Password]: '',
-    })
+    }), []);
+    const { values, onChange, onSubmit, resetFormHandler } = useForm(loginSubmitHandler, initialValues)
     const emailInputRef = useRef();
     const [formValues, setFormValues] = useState(formInitialState);
     const [errors, setErrors] = useState({});

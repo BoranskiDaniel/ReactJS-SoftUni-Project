@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useContext } from 'react';
+import { useState, useRef, useEffect, useContext, useMemo } from 'react';
 import { Link } from "react-router-dom";
 import useForm from '../../hooks/useForm';
 
@@ -14,13 +14,13 @@ const RegisterFormKeys = {
 export default function RegisterForm({
 }) {
     const { registerSubmitHandler } = useContext(AuthContext);
-
-    const { values, onChange, onSubmit } = useForm(registerSubmitHandler, {
+    const initialValues = useMemo(() => ({
         [RegisterFormKeys.Email]: '',
         [RegisterFormKeys.Company]: '',
         [RegisterFormKeys.Password]: '',
         [RegisterFormKeys.ConfirmPassword]: ''
-    });
+    }), []);
+    const { values, onChange, onSubmit } = useForm(registerSubmitHandler, initialValues);
     const usernameInputRef = useRef();
     const [errors, setErrors] = useState({});
 

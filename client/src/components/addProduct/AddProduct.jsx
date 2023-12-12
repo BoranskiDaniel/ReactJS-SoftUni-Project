@@ -1,6 +1,6 @@
 import styles from "./AddProduct.module.css";
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect, useRef, useContext } from "react";
+import { useState, useEffect, useRef, useContext, useMemo } from "react";
 import useForm from "../../hooks/useForm";
 import AuthContext from "../../contex/AuthContext";
 
@@ -30,7 +30,7 @@ export default function AddProduct() {
         setChecked(!checked);
     };
 
-    const { values, onChange, onSubmit } = useForm(productCreateHandler, {
+    const initialValues = useMemo(() => ({
         [addFormKeys.name]: "",
         [addFormKeys.type]: "",
         [addFormKeys.sort]: "",
@@ -39,7 +39,9 @@ export default function AddProduct() {
         [addFormKeys.email]: "",
         [addFormKeys.price]: "",
         [addFormKeys.negotiable]: "",
-    });
+    }), []);
+
+    const { values, onChange, onSubmit } = useForm(productCreateHandler, initialValues);
 
     return (
         <div className={styles.container}>
