@@ -9,14 +9,14 @@ export default function EditProduct() {
     const navigate = useNavigate();
     const { productId } = useParams();
     const [product, setProduct] = useState({
-        product: '',
+        name: '',
         type: '',
         sort: '',
         imageUrl: '',
         company: '',
         email: '',
         price: '',
-        // negotiable: '',
+        negotiable: '',
     })
 
     useEffect(() => {
@@ -51,9 +51,9 @@ export default function EditProduct() {
                             className={styles.textField}
                             type="text"
                             id="product"
-                            name="product"
+                            name="name"
                             placeholder="Product"
-                            value={values.product}
+                            value={values.name}
                             onChange={onChange}
                         // required
                         />
@@ -64,10 +64,10 @@ export default function EditProduct() {
                         <label htmlFor="type">Type:</label>
                     </div>
                     <div className={styles.col75}>
-                        <select className={styles.selectType} id="type" onChange={onChange} name="type">
-                            <option value={values.type}>Vegetable</option>
-                            <option value={values.type}>Fruit</option>
-                            <option value={values.type}>Agricultural Product</option>
+                        <select className={styles.selectType} id="type" onChange={onChange} value={values.type} name="type">
+                            <option> Vegetable</option>
+                            <option> Fruit</option>
+                            <option> Agricultural Product</option>
                         </select>
                     </div>
                 </div>
@@ -160,7 +160,7 @@ export default function EditProduct() {
                         type="checkbox"
                         id="negotiable"
                         name="negotiable"
-                        value={product.negotiable}
+                        value={values.negotiable}
                         onChange={onChange}
                     />
                     <label className={styles.check} htmlFor="negotiable"> Negotiable </label>
