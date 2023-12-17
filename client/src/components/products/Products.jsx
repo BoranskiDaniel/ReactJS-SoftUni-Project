@@ -2,7 +2,7 @@ import Offer from "../offer/Offer";
 import * as productService from "../../services/productService";
 import { ProductContext } from "../../contex/ProductContext";
 
-import { useState, useEffect } from "react";    
+import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import ProductCard from "../productCard/ProductCard";
@@ -63,6 +63,9 @@ export default function Products() {
                             negotiable={product.negotiable}
                         />
                     ))}
+                    {showProduct.length === 0 && (
+                        <h2 style={{ backgroundColor: "white", width: "200px", margin: "0px 0px 0px 630px" }}>No products yet</h2>
+                    )}
                 </div>
             </div >
         </ProductContext.Provider>
