@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState, useContext, useEffect } from "react";
 
 import styles from "./ProductCard.module.css";
@@ -14,7 +14,7 @@ export default function ProductCard(
         _id,
     }
 ) {
-    const { email, userId } = useContext(AuthContext);
+    const { userId } = useContext(AuthContext);
     const [product, setProduct] = useState({});
     const [order, setOrder] = useState(false);
     const { onDeleteHandler } = useContext(ProductContext);
@@ -33,8 +33,8 @@ export default function ProductCard(
             setOrder(false);
         };
     }
-    console.log({ product });
-
+    // console.log({ product });
+    
     const closeHandler = () => {
         setOrder(false)
     };
