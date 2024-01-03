@@ -8,18 +8,22 @@ export default function MyProducts({
 }) {
 
     const { userId } = useContext(AuthContext)
-    const [showMyProduct, setShowMyPorduct] = useState({});
+    const [showMyProduct, setShowMyPorduct] = useState([]);
     useEffect(() => {
-        productService.getMyProduct(_id)
+        productService.getAll()
             .then(setShowMyPorduct)
             .catch(err => console.log(err));
     }, [_id]);
 
-    console.log(showMyProduct);
-    console.log(showMyProduct._ownerId);
+    // console.log(...showMyProduct);
+    let element = '';
+    for (let index = 0; index < showMyProduct.length; index++) {
+        element = showMyProduct[index]._ownerId;
+        console.log(element);
+    }
     console.log(userId);
 
-    const isOwner = userId === showMyProduct._ownerId;
+    const isOwner = userId === element;
 
     return (
         <>
