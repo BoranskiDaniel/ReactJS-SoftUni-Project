@@ -1,8 +1,7 @@
 import * as productService from "../../services/productService";
 import { useState, useEffect, useContext } from "react";
-import { AuthContext } from "../../contex/AuthContext";
+import AuthContext from "../../contex/AuthContext";
 import styles from "../productCard/ProductCard.module.css"
-
 
 export default function MyProducts({
     _id
