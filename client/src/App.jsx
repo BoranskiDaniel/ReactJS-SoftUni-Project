@@ -82,7 +82,6 @@ function App() {
         <AuthContext.Provider value={values}>
             <div className="main-layout">
                 <Header />
-
                 <Routes>
                     <Route path='/' element={<SliderSection />} />
                     <Route path='/about' element={<About />} />

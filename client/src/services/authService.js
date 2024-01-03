@@ -1,7 +1,7 @@
 import * as request from "../lib/request"
 
 const baseUrl = 'http://localhost:3030/users';
-const token = localStorage.getItem('accessToken');
+// const token = localStorage.getItem('accessToken');
 
 export const login = async (email, password) => {
     const result = await request.post(`${baseUrl}/login`, {

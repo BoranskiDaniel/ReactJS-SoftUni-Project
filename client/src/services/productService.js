@@ -9,8 +9,8 @@ export const getAll = async () => {
     return result;
 };
 
-export const getMyProduct = async (_ownerId) => {
-    const result = await request.get(baseUrl, _ownerId);
+export const getMyProduct = async (_id) => {
+    const result = await request.get(baseUrl, _id);
 
     return result;
 }
