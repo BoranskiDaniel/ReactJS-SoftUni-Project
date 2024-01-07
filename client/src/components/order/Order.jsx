@@ -1,16 +1,25 @@
-import styles from "./Order.module.css"
-
-import useForm from "../../hooks/useForm";
-import { useContext } from "react";
-import AuthContext from "../../contex/AuthContext";
+import styles from "./Order.module.css";
+import { useState } from "react";
+import { Navigate } from "react-router-dom";
 
 export default function Order({ name, company, closeHandler }) {
-    const { orderSubmitHandler } = useContext(AuthContext);
-    const { values, onChange, onSubmit } = useForm(orderSubmitHandler, {
-        quantity: '',
-        email: '',
-        delivery: ''
-    })
+    const [values, setFormValues] = useState([]);
+    const onSubmit = (e) => {
+        e.preventDefault();
+    };
+
+    const onChange = (e) => {
+        setFormValues(state => ({
+            ...state,
+            [e.target.name]: e.target.value
+        }));
+    };
+
+    const orderSubmitHandler = () => {
+        console.log("Your order has been send!")
+        // navigate('/products')
+    }
+
     return (
         <div className={styles.backdrop} >
             <form className={styles.mainOrder} onSubmit={onSubmit}>
@@ -23,7 +32,7 @@ export default function Order({ name, company, closeHandler }) {
                         type="number"
                         id="quantity"
                         name="quantity"
-                        value={values.quantity}
+                        // value={values}
                         onChange={onChange}
                         required
                     />
@@ -35,7 +44,7 @@ export default function Order({ name, company, closeHandler }) {
                         type="text"
                         id="email"
                         name="email"
-                        value={values.email}
+                        // value={values}
                         onChange={onChange}
                         required
                     />
@@ -47,13 +56,13 @@ export default function Order({ name, company, closeHandler }) {
                         type="text"
                         id="delivery"
                         name="delivery"
-                        value={values.delivery}
+                        // value={values}
                         onChange={onChange}
                         required
                     />
                 </div>
                 <div>
-                    <button type="submit" onClick={orderSubmitHandler && closeHandler}>Order</button>
+                    <button type="button" onClick={closeHandler && orderSubmitHandler}>Order</button>
                     <button type="button" onClick={closeHandler}>Close</button>
                 </div>
             </form>

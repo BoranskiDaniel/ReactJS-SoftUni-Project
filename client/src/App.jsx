@@ -63,17 +63,12 @@ function App() {
         }
     }
 
-    const orderSubmitHandler = () => {
-        console.log("Your order has been send!")
-        navigate('/products')
-    }
 
     const values = {
         loginSubmitHandler,
         registerSubmitHandler,
         logoutHandler,
         productCreateHandler,
-        orderSubmitHandler,
         email: auth.email,
         userId: auth._id,
         isAuthenticated: !!auth.accessToken,

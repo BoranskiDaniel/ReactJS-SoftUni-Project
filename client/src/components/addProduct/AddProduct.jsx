@@ -1,5 +1,4 @@
 import styles from "./AddProduct.module.css";
-import { useNavigate } from "react-router-dom";
 import { useState, useEffect, useRef, useContext, useMemo } from "react";
 import useForm from "../../hooks/useForm";
 import AuthContext from "../../contex/AuthContext";
