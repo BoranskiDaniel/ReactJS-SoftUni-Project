@@ -43,7 +43,7 @@ export default function MyProducts({
         <>
             {isOwner && (
 
-                <div className={styles.articles} >
+                <div className={styles.articlesmyprod} >
                     <article >
                         <div className={styles.articleWrapper}>
                             <figure className={styles.cardFigure}>
@@ -61,7 +61,7 @@ export default function MyProducts({
                 </div>
             )}
             {showMyProduct.length === 0 && (
-                <h2 style={{ width: "400px", padding: "25px", margin: "40px 0px 0px 630px" }}>You do not have products yet</h2>
+                <h2 style={{ width: "400px", padding: "25px", margin: "40px 0px 0px 630px" }}>You do not have products yet!</h2>
             )}
         </>
     );

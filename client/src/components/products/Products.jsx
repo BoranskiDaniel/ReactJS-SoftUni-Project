@@ -36,7 +36,6 @@ export default function Products() {
     return (
         <ProductContext.Provider value={contextValue}>
             <div id="product" className="product">
-                <Offer />
                 <div className="container">
                     <div className="container">
                         <div className="row">
@@ -48,26 +47,27 @@ export default function Products() {
                         </div>
                     </div>
                 </div>
-                <div className="container-fluid">
-                    {showProduct.map((product) => (
-                        <ProductCard
-                            key={product._id}
-                            _id={product._id}
-                            _ownerId={product._ownerId}
-                            name={product.name}
-                            type={product.type}
-                            sort={product.sort}
-                            imageUrl={product.imageUrl}
-                            company={product.company}
-                            price={product.price}
-                            negotiable={product.negotiable}
-                        />
-                    ))}
-                    {showProduct.length === 0 && (
-                        <h2 style={{ backgroundColor: "white", width: "200px", margin: "0px 0px 0px 630px" }}>No products yet</h2>
-                    )}
-                </div>
             </div >
+            <div className="container-fluid">
+                {showProduct.map((product) => (
+                    <ProductCard
+                        key={product._id}
+                        _id={product._id}
+                        _ownerId={product._ownerId}
+                        name={product.name}
+                        type={product.type}
+                        sort={product.sort}
+                        imageUrl={product.imageUrl}
+                        company={product.company}
+                        price={product.price}
+                        negotiable={product.negotiable}
+                    />
+                ))}
+                {showProduct.length === 0 && (
+                    <h2 style={{ backgroundColor: "white", width: "200px", margin: "0px 0px 0px 630px" }}>No products yet</h2>
+                )}
+            </div>
+            <Offer />
         </ProductContext.Provider>
     );
 };
