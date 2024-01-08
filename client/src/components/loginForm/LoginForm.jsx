@@ -30,32 +30,21 @@ export default function LoginForm({
         emailInputRef.current.focus();
     }, []);
 
-
-    // const submitHandler = (e) => {
-    //     if (formValues.email === "" || formValues.password === "") {
-    //         e.preventDefault();
-    //         setErrors(state => ({
-    //             ...state,
-    //             email: "You must enter email and password!",
-    //             password: "You must enter email and password!",
-    //         }));
-    //     } else {
-    //         e.preventDefault();
-    //         resetFormHandler();
-    //     }
-    // };
-    // console.log(errors);
-
     const simpleValidator = () => {
         if (formValues.email === "" || formValues.password === "") {
             setErrors(state => ({
                 ...state,
-                email: "You must enter email and password!",
+                email: "You must enter correct email and password!",
             }));
         } else {
             setErrors(state => ({ ...state, email: "" }));
             resetFormHandler();
         }
+    }
+
+    const resetHandler = () => {
+        setErrors(state => ({ ...state, email: "" }));
+        resetFormHandler();
     }
 
     return (
@@ -73,7 +62,6 @@ export default function LoginForm({
                         value={values[LoginFormKeys.Email]}
                         placeholder='example@abc.de'
                         onChange={onChange}
-                        onBlur={simpleValidator}
                         className={errors.email && styles.inputError}
                     />
                 </div>
@@ -85,7 +73,6 @@ export default function LoginForm({
                         name={LoginFormKeys.Password}
                         value={values[LoginFormKeys.Password]}
                         onChange={onChange}
-                        onBlur={simpleValidator}
                         className={errors.email && styles.inputError}
                     />
                     {errors.email && (
@@ -93,8 +80,8 @@ export default function LoginForm({
                     )}
                 </div>
                 <div>
-                    <button type="submit" /*onClick={submitHandler}*/> Login</button>
-                    <button type="button" onClick={resetFormHandler}>Reset</button>
+                    <button type="submit" onClick={simpleValidator}> Login</button>
+                    <button type="button" onClick={resetHandler}>Reset</button>
                 </div>
                 <div >
                     <p className={styles.noAccount}>You don't have an account? <Link to="/register"> Register</Link></p>
