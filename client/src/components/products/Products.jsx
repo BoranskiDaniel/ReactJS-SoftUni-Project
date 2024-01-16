@@ -68,7 +68,7 @@ export default function Products() {
                     />
                 ))}
                 {showProduct.length === 0 && (
-                    <h2 style={{ backgroundColor: "white", width: "200px", margin: "0px 0px 50px 630px" }}>No products yet</h2>
+                    <h2 style={{ backgroundColor: "white", width: "200px", margin: "0px 0px 50px 650px", padding: "10px", }}>No products yet</h2>
                 )}
             </div>
             <Offer />
