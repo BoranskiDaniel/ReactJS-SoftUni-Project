@@ -33,6 +33,10 @@ export default function Products() {
 
     const contextValue = { onDeleteHandler }
 
+    if (Math.random() < 0.5) {
+        throw new Error('Boundary Test');
+    }
+
     return (
         <ProductContext.Provider value={contextValue}>
             <div id="product" className="product">
@@ -64,7 +68,7 @@ export default function Products() {
                     />
                 ))}
                 {showProduct.length === 0 && (
-                    <h2 style={{ backgroundColor: "white", width: "200px", margin: "0px 0px 0px 630px" }}>No products yet</h2>
+                    <h2 style={{ backgroundColor: "white", width: "200px", margin: "0px 0px 50px 630px" }}>No products yet</h2>
                 )}
             </div>
             <Offer />

@@ -17,6 +17,7 @@ import AddProduct from "./components/addProduct/AddProduct";
 import Logout from './components/Logout';
 import NotFound from './components/notFound/notFound';
 import EditProduct from './components/editProduct/EditProduct';
+import ErrorBoundary from './components/ErrorBoundary';
 
 // import Loader from "./components/Loader" ;
 
@@ -74,25 +75,27 @@ function App() {
         isAuthenticated: !!auth.accessToken,
     }
     return (
-        <AuthContext.Provider value={values}>
-            <div className="main-layout">
-                <Header />
-                <Routes>
-                    <Route path='/' element={<SliderSection />} />
-                    <Route path='/about' element={<About />} />
-                    <Route path='/products' element={<Products />} />
-                    <Route path='/myProducts' element={<MyProducts />} />
-                    <Route path='/addProduct' element={<AddProduct />} />
-                    <Route path='/login' element={<LoginForm />} />
-                    <Route path='/register' element={<RegisterForm />} />
-                    <Route path='/logout' element={<Logout />} />
-                    <Route path='/products/:productId/edit' element={<EditProduct />} />
-                    <Route path='/*' element={<NotFound />} />
-                </Routes>
+        <ErrorBoundary>
+            <AuthContext.Provider value={values}>
+                <div className="main-layout">
+                    <Header />
+                    <Routes>
+                        <Route path='/' element={<SliderSection />} />
+                        <Route path='/about' element={<About />} />
+                        <Route path='/products' element={<Products />} />
+                        <Route path='/myProducts' element={<MyProducts />} />
+                        <Route path='/addProduct' element={<AddProduct />} />
+                        <Route path='/login' element={<LoginForm />} />
+                        <Route path='/register' element={<RegisterForm />} />
+                        <Route path='/logout' element={<Logout />} />
+                        <Route path='/products/:productId/edit' element={<EditProduct />} />
+                        <Route path='/*' element={<NotFound />} />
+                    </Routes>
 
-                <Footer />
-            </div>
-        </AuthContext.Provider>
+                    <Footer />
+                </div>
+            </AuthContext.Provider>
+        </ErrorBoundary>
     )
 }
 
