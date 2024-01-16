@@ -1,4 +1,4 @@
-import {Navigate } from "react-router-dom";
+import {Navigate, Outlet } from "react-router-dom";
 import { useContext } from "react"
 import AuthContext from "../../contex/AuthContext"
 
@@ -10,9 +10,5 @@ export default function AuthGuard(props) {
         return <Navigate to="/login" />;
     }
 
-    return (
-        <>
-            {props.children}
-        </>
-    )
+    return <Outlet/>;
 }
