@@ -33,9 +33,9 @@ export default function Products() {
 
     const contextValue = { onDeleteHandler }
 
-    if (Math.random() < 0.5) {
-        throw new Error('Boundary Test');
-    }
+    // if (Math.random() < 0.5) {
+    //     throw new Error('Boundary Test');
+    // }
 
     return (
         <ProductContext.Provider value={contextValue}>

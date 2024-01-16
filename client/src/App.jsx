@@ -18,6 +18,7 @@ import Logout from './components/Logout';
 import NotFound from './components/notFound/notFound';
 import EditProduct from './components/editProduct/EditProduct';
 import ErrorBoundary from './components/ErrorBoundary';
+import AuthGuard from './components/guards/AuthGuard';
 
 // import Loader from "./components/Loader" ;
 
@@ -83,12 +84,12 @@ function App() {
                         <Route path='/' element={<SliderSection />} />
                         <Route path='/about' element={<About />} />
                         <Route path='/products' element={<Products />} />
-                        <Route path='/myProducts' element={<MyProducts />} />
-                        <Route path='/addProduct' element={<AddProduct />} />
+                        <Route path='/myProducts' element={<AuthGuard> <MyProducts /> </AuthGuard>} />
+                        <Route path='/addProduct' element={<AuthGuard><AddProduct /></AuthGuard>} />
                         <Route path='/login' element={<LoginForm />} />
                         <Route path='/register' element={<RegisterForm />} />
-                        <Route path='/logout' element={<Logout />} />
-                        <Route path='/products/:productId/edit' element={<EditProduct />} />
+                        <Route path='/logout' element={<AuthGuard><Logout /></AuthGuard>} />
+                        <Route path='/products/:productId/edit' element={<AuthGuard><EditProduct /></AuthGuard>} />
                         <Route path='/*' element={<NotFound />} />
                     </Routes>
 
